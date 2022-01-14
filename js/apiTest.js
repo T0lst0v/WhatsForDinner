@@ -9,19 +9,20 @@ const urlFindByIngredients =  'https://api.spoonacular.com/recipes/findByIngredi
  https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
  separate ingredients by commas and plus sign ',+'
  separate parameters with a '&' e.g. ingredients= and number=
- gets 1 basic recipe that includes the ingredients chicken, cheese and peas
+ gets 5 basic recipes that includes the ingredients chicken, cheese and cord
  use recipe id from the recipe to get the detailed recipe information
 */
-//ingredientTest() UNCOMMENT ME TO RUN BASIC RECIPE TEST
+// UNCOMMENT BELOW TO RUN TEST
+//ingredientTest()
 function ingredientTest() {
-    fetch(`${urlFindByIngredients}apiKey=${apiKey}&ingredients=chicken,+cheese,+peas&number=1`)
+    fetch(`${urlFindByIngredients}apiKey=${apiKey}&ingredients=chicken,+cheese, +corn&number=5`)
         .then(response => response.json())
         .then(result => displayRecipesFromSearch(result))
 }
 
 // display some basic recipe info returned from our ingredient search
 function displayRecipesFromSearch(recipes) {
-    console.log('here')
+    console.log("logging recipes search");
     console.log(recipes)
     exampleDiv.innerHTML += recipes.map(recipe =>
         `<ul style="list-style-type: none">
@@ -39,16 +40,19 @@ function displayRecipesFromSearch(recipes) {
 https://api.spoonacular.com/recipes/716429/information?includeNutrition=false
  get recipe '636411' and displays some data
 */
-//getRecipeFromID(636411) UNCOMMENT ME TO RUN DETAILED RECIPE TEST
+// UNCOMMENT BELOW TO RUN TEST
+//getRecipeFromID(636411)
 function getRecipeFromID(recipeID){
     let urlFindRecipeFromID = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${apiKey}`
     fetch(`${urlFindRecipeFromID}`)
         .then(response => response.json())
         .then(result => displayRecipeFromID(result))
+        //.then(result => console.log(result))
 }
 
 // display some data from the detailed recipe
 function displayRecipeFromID(recipe){
+    console.log("logging detailed recipe");
     console.log(recipe)
     exampleDiv.innerHTML +=
         `<ul style="list-style-type: none">
