@@ -1,4 +1,6 @@
-﻿const apiKey = '88d877514e7d458aac097379c5a5ed83'
+﻿// TEST FILE DELETE BEFORE DEPLOYMENT
+
+const apiKey = '88d877514e7d458aac097379c5a5ed83'
 const exampleDiv = document.getElementById("recipeExampleDiv")
 const urlFindByIngredients =  'https://api.spoonacular.com/recipes/findByIngredients?'
 
@@ -10,7 +12,7 @@ const urlFindByIngredients =  'https://api.spoonacular.com/recipes/findByIngredi
  gets 1 basic recipe that includes the ingredients chicken, cheese and peas
  use recipe id from the recipe to get the detailed recipe information
 */
-ingredientTest()
+//ingredientTest() UNCOMMENT ME TO RUN BASIC RECIPE TEST
 function ingredientTest() {
     fetch(`${urlFindByIngredients}apiKey=${apiKey}&ingredients=chicken,+cheese,+peas&number=1`)
         .then(response => response.json())
@@ -37,7 +39,7 @@ function displayRecipesFromSearch(recipes) {
 https://api.spoonacular.com/recipes/716429/information?includeNutrition=false
  get recipe '636411' and displays some data
 */
-getRecipeFromID(636411)
+//getRecipeFromID(636411) UNCOMMENT ME TO RUN DETAILED RECIPE TEST
 function getRecipeFromID(recipeID){
     let urlFindRecipeFromID = `https://api.spoonacular.com/recipes/${recipeID}/information?apiKey=${apiKey}`
     fetch(`${urlFindRecipeFromID}`)
