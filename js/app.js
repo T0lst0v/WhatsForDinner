@@ -8,7 +8,6 @@ const btnAddIngredient = document.querySelector("#btnAddIngredient");
 const btnFindRecipe = document.querySelector("#btnFindRecipe");
 const ingredientContainer = document.querySelector("#ingredientContainer");
 const fullRecipeContainer = document.querySelector("#fullRecipeContainer");
-
 //variables
 const ingredientsArr = [];
 const lettersOnly = /^[a-zA-Z]+$/g;
@@ -23,7 +22,7 @@ const lettersOnly = /^[a-zA-Z]+$/g;
 
 // Fetching Ingredient ID
 async function getRecipeIDs(ingredients) {
-  const response = await fetch(`${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}`);
+  const response = await fetch(`${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=10`);
   console.log("response= " + response);
   const recipeIDs = await response.json();
   console.log("recipeIDs= " + recipeIDs);
@@ -92,10 +91,17 @@ function stringToSearch() {
   return ingredientsArr.join(",+");
 }
 
-// Ingredients Input
+// Ingredients Input on Click
 btnAddIngredient.addEventListener("click", () => {
   displayIngredient(getInputIngredient());
   console.log(ingredientsArr);
+});
+
+// Ingredients Input on Enter Key
+inputIngredient.addEventListener("keyup", function (event) {
+  if (event.keyCode === 13) {
+    btnAddIngredient.click();
+  }
 });
 
 //Search recipes with given ingredients
@@ -116,9 +122,9 @@ function removeIngredient(item) {
   console.log(ingredientsArr);
 }
 
+// Displaying Full recipe in separate div (need to make it as a Modal)
 async function displayFullRecipe(id) {
   let fullRecipeObj = await getRecipeFromID(id);
-
   let allIngredientsList = fullRecipeObj.extendedIngredients.map((e) => {
     return `<li class="recipeIngredientsList">${e.name}</li>`;
   });
