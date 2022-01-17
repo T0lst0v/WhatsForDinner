@@ -1,3 +1,311 @@
+:root {
+    --button-hover-background-color: #d5d9d9;
+    --shadow-box: rgba(213, 217, 217, 1) 2px 5px 10px 2px;
+}
+
 .error {
-  border: solid 2px red;
+    border: solid 2px red;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: ghostwhite;
+}
+
+#mainDiv {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    user-select: none;
+    -webkit-user-select: none;
+    height: 90%;
+}
+
+#divTitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 70px;
+    margin-bottom: 20px;
+    margin-top: 120px;
+}
+
+#divIngredients {
+    display: none;
+}
+
+#divRecipes {
+    display: none;
+}
+
+#btnAddIngredient {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border: 1px solid #d5d9d9;
+    font-size: x-large;
+    padding: 5px 35px 3px 25px;
+    background: #F9CDCD;
+}
+
+#txtAddIngredient {
+    font-size: x-large;
+    min-width: 350px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid #d5d9d9;
+    padding: 5px 25px 3px 20px;
+}
+
+#ulIngredients {
+    list-style-type: none;
+    margin-left: -45px;
+    min-width: 450px;
+}
+
+#btnFindRecipes {
+    border-radius: 10px;
+    border: 1px solid #d5d9d9;
+    font-size: large;
+    padding: 5px 35px 3px 25px;
+    background: #F9CDCD;
+    width: 80%;
+}
+
+#divFindRecipesButton {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.liIngredient {
+    background-color: white;
+    padding-top: 5px;
+    padding-left: 25px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+    font-size: medium;
+    font-weight: 550;
+    margin-bottom: 10px;
+    box-shadow: rgba(213, 217, 217, 1) 0 5px 10px 0;
+}
+
+.button {
+    background-color: #fff;
+    box-shadow: rgba(213, 217, 217, 1) 0 5px 10px 0;
+    font-family: "Segoe UI Semibold", sans-serif;
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-size: x-large;
+    border: 1px solid #d5d9d9;
+}
+
+#lblRangeFilter {
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding-top: 3px;
+    padding-right: 2px;
+    padding-left: 4px;
+    padding-bottom: 2px;
+    margin-top: -4px;
+}
+
+#divSlider {
+    display: flex;
+    flex-direction: row;
+}
+
+#divFilters {
+    text-align: center;
+}
+
+.chkFilter {
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-right: 10px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+#divButtons {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+#btnDineOut {
+    border-radius: 0;
+}
+
+#btnOrderOnline {
+    border-radius: 0 11px 11px 0;
+    padding-right: 100px;
+}
+
+#btnCookAtHome {
+    border-radius: 11px 0 0 11px;
+    padding-left: 100px;
+}
+
+#btnDineOut:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+#btnCookAtHome:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+#btnAddIngredient:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+#btnOrderOnline:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+#btnAddIngredient:hover {
+    background-color: var(--button-hover-background-color);
+}
+
+.ingredientListItem {
+    margin-bottom: 8px;
+    box-shadow: var(--shadow-box);
+}
+
+.removeImage {
+    float: right;
+    max-width: 100%;
+    height: auto;
+    width: 20px;
+    padding-right: 8px;
+}
+
+#removeButton {
+    background-color: transparent;
+    border: none;
+    font-size: large;
+}
+
+#imgLogo {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+#divLogo {
+    margin-top: 40px;
+    max-width: 90%;
+}
+
+@media (max-width: 650px) {
+    #divTitle {
+        margin-top: 30px;
+    }
+
+    #divButtons {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .button {
+        padding: 15px 40px;
+        border-radius: 11px;
+        font-size: large;
+        width: 90%;
+    }
+
+    #btnOrderOnline {
+        border-radius: 10px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #btnDineOut {
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+
+    #btnCookAtHome {
+        border-radius: 10px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #imgLogo {
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    #divLogo {
+        margin-left: -30px;
+    }
+
+    #btnFindRecipes {
+        width: 100%;
+    }
+
+    #txtAddIngredient {
+        width: 90%;
+        border-radius: 10px;
+        min-width: 0;
+    }
+
+    #btnAddIngredient {
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 10px
+    }
+}
+
+@media (max-width: 540px) {
+    #divTitle {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 430px) {
+    #divTitle {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 360px) {
+    #divTitle {
+        font-size: 40px
+    }
+}
+
+@media (max-width: 320px) {
+    #divTitle {
+        font-size: 30px;
+    }
 }
