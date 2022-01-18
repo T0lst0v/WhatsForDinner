@@ -58,24 +58,24 @@ function displayRecipesFromSearch(recipes) {
   });
 }
 
-// Display list of ingredients
+/// Display list of ingredients
 function displayIngredient(ingredient) {
-  if (ingredient.match(lettersOnly)) {
-    console.log("matching true");
-    inputIngredient.className = inputIngredient.classList.remove("error");
-    let itemContainer = `
-    <li class="ingredientLi" id="${ingredient}">
-        <button class="ingredientInfo">&#8505;</button>
-        <label class="ingredientText">${ingredient}</label>
-        <button onclick = "removeIngredient('${ingredient}')">&times;</button>
-    </li>
-    `;
-    ingredientsArr.push(ingredient);
-    ingredientContainer.insertAdjacentHTML("beforeend", itemContainer);
-  } else {
+  if (!ingredient.match(lettersOnly)) {
     console.log("matching - false");
     inputIngredient.className = inputIngredient.className + " error";
+    return;
   }
+  console.log("matching true");
+  inputIngredient.className = inputIngredient.classList.remove("error");
+  let itemContainer = `
+      <li class="ingredientLi" id="${ingredient}">
+          <button class="ingredientInfo">&#8505;</button>
+          <label class="ingredientText">${ingredient}</label>
+          <button onclick = "removeIngredient('${ingredient}')">&times;</button>
+      </li>
+      `;
+  ingredientsArr.push(ingredient);
+  ingredientContainer.insertAdjacentHTML("beforeend", itemContainer);
 }
 
 function getInputIngredient() {
