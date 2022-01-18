@@ -27,7 +27,7 @@ const lettersOnly = /^[a-zA-Z]+$/g;
 
 // Fetching Ingredient ID
 async function getRecipeIDs(ingredients) {
-  const response = await fetch(`${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=5`);
+  const response = await fetch(`${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=10`);
   console.log("response= " + response);
   const recipeIDs = await response.json();
   console.log("recipeIDs= " + recipeIDs);
@@ -88,7 +88,7 @@ function displayIngredient(ingredient) {
     txtIngredient.className = txtIngredient.className + " error";
     return;
   }
-
+  txtIngredient.classList.remove("error");
   console.log("matching true");
   let newIngredientLi = `
     <li class="liIngredient" id="${ingredient}">
