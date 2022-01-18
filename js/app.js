@@ -1,16 +1,21 @@
-const apiKey = "a77214948c1b41d6a431b3f28497a02b";
+const apiKey = "88d877514e7d458aac097379c5a5ed83";
 const urlRecipe = "https://api.spoonacular.com/recipes/";
 //fields
-const mainContainer = document.querySelector("#mainContainer");
-const inputIngredient = document.querySelector("#inputIngredient");
+const divRecipes = document.getElementById("divRecipes");
+const txtIngredient = document.getElementById("txtAddIngredient");
 //buttons
-const btnAddIngredient = document.querySelector("#btnAddIngredient");
-const btnFindRecipe = document.querySelector("#btnFindRecipe");
+const btnAddIngredient = document.getElementById("btnAddIngredient");
+const btnFindRecipe = document.getElementById("btnFindRecipes");
+const ulIngredients = document.getElementById("ulIngredients");
 const ingredientContainer = document.querySelector("#ingredientContainer");
 const fullRecipeContainer = document.querySelector("#fullRecipeContainer");
+const btnCookAtHome = document.getElementById("btnCookAtHome");
+const sldFilterRange = document.getElementById("rngFilter");
+const lblRangeFilter = document.getElementById("lblRangeFilter");
 //variables
 const ingredientsArr = [];
 const lettersOnly = /^[a-zA-Z]+$/g;
+
 /*
  example GET for find by ingredients
  https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
@@ -22,29 +27,47 @@ const lettersOnly = /^[a-zA-Z]+$/g;
 
 // Fetching Ingredient ID
 async function getRecipeIDs(ingredients) {
-  const response = await fetch(`${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=10`);
-  console.log("response= " + response);
-  const recipeIDs = await response.json();
-  console.log("recipeIDs= " + recipeIDs);
-  return recipeIDs;
+    const response = await fetch(`${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=10`);
+    console.log("response= " + response);
+    const recipeIDs = await response.json();
+    console.log("recipeIDs= " + recipeIDs);
+    return recipeIDs;
 }
 
 // Fetching Recipes of ID
 async function getRecipeFromID(recipeID) {
-  const response = await fetch(`${urlRecipe}${recipeID}/information?apiKey=${apiKey}`);
-  console.log(`link is: ${urlRecipe}${recipeID}/information?apiKey=${apiKey}`);
-  const recipes = await response.json();
-  console.log("recipes: " + recipes);
-  return recipes;
+    const response = await fetch(`${urlRecipe}${recipeID}/information?apiKey=${apiKey}`);
+    console.log(`link is: ${urlRecipe}${recipeID}/information?apiKey=${apiKey}`);
+    const recipes = await response.json();
+    console.log("recipes: " + recipes);
+    return recipes;
+}
+
+// Displaying Full recipe in separate div (need to make it as a Modal)
+async function displayFullRecipe(id) {
+    let fullRecipeObj = await getRecipeFromID(id);
+    let allIngredientsList = fullRecipeObj.extendedIngredients.map((e) => {
+        return `<li class="recipeIngredientsList">${e.name}</li>`;
+    });
+    console.log("allIngredientsList = " + allIngredientsList);
+    fullRecipeContainer.innerHTML = `
+    <img src="${fullRecipeObj.image}" alt="${fullRecipeObj}"/>
+    <h2>${fullRecipeObj.title}</h2>
+    <ul>${allIngredientsList.join("")}</ul>
+    <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
+    <p class='instructions'>${fullRecipeObj.instructions}</p>
+    <p class='summary'>${fullRecipeObj.summary}</p>
+  `;
+    console.log(fullRecipeObj);
 }
 
 // Display Title and Picture of ID Recipe
 function displayRecipesFromSearch(recipes) {
-  console.log("logging recipes search");
-  console.log(recipes);
+    console.log("logging recipes search");
+    console.log(recipes);
 
-  recipes.forEach((recipe) => {
-    let recipeContainer = `
+    recipes.forEach((recipe) => {
+        let recipeContainer = `
         <ul style="listOfTitles">
             <li>${recipe.title}</li>
             <li><img src=${recipe.image} alt='image of '${recipe.title}/></li>
@@ -54,12 +77,13 @@ function displayRecipesFromSearch(recipes) {
             <button id="btnDisplayRecipe" onclick = "displayFullRecipe('${recipe.id}')">Show More</button>
         </ul>
         `;
-    mainContainer.insertAdjacentHTML("beforeend", recipeContainer);
-  });
+        divRecipes.insertAdjacentHTML("beforeend", recipeContainer);
+    });
 }
 
 /// Display list of ingredients
 function displayIngredient(ingredient) {
+<<<<<<< HEAD
   if (!ingredient.match(lettersOnly)) {
     console.log("matching - false");
     inputIngredient.className = inputIngredient.className + " error";
@@ -76,67 +100,81 @@ function displayIngredient(ingredient) {
       `;
   ingredientsArr.push(ingredient);
   ingredientContainer.insertAdjacentHTML("beforeend", itemContainer);
+=======
+    if (!ingredient.match(lettersOnly)) {
+        console.log("matching - false");
+        txtIngredient.className = txtIngredient.className + " error";
+        return;
+    }
+
+    console.log("matching true");
+    let newIngredientLi = `
+    <li class="liIngredient" id="${ingredient}">
+        ${ingredient}
+        <img src="../images/x_mark.png" class="removeImage" onclick = "removeIngredient('${ingredient}')" 
+            alt="remove ingredient clickable image button"/>
+    </li>`;
+    ingredientsArr.push(ingredient);
+    ulIngredients.insertAdjacentHTML("beforeend", newIngredientLi);
 }
 
+//removing item from ingredients list
+function removeIngredient(item) {
+    console.log(`removed: ${item}`);
+    ulIngredients.removeChild(document.querySelector(`#${item}`));
+    let i = ingredientsArr.indexOf(item);
+    ingredientsArr.splice(i, 1);
+
+    console.log(ingredientsArr);
+>>>>>>> a01ceedeead7fafd72defd5437b26ed31d20db88
+}
+
+// grabs input from text box
 function getInputIngredient() {
-  let ingredient = inputIngredient.value;
-  console.log("input= " + ingredient);
-  inputIngredient.value = "";
-  return ingredient;
+    let ingredient = txtIngredient.value;
+    console.log("input= " + ingredient);
+    txtIngredient.value = "";
+    return ingredient;
 }
 
 // converting arr of Ingredients to string
 function stringToSearch() {
-  console.log("ingredientsArr: " + ingredientsArr.join(",+"));
-  return ingredientsArr.join(",+");
+    console.log("ingredientsArr: " + ingredientsArr.join(",+"));
+    return ingredientsArr.join(",+");
 }
 
 // Ingredients Input on Click
 btnAddIngredient.addEventListener("click", () => {
-  displayIngredient(getInputIngredient());
-  console.log(ingredientsArr);
+    displayIngredient(getInputIngredient());
+    console.log(ingredientsArr);
 });
 
 // Ingredients Input on Enter Key
-inputIngredient.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    btnAddIngredient.click();
-  }
+txtIngredient.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        btnAddIngredient.click();
+    }
 });
 
 //Search recipes with given ingredients
 btnFindRecipe.addEventListener("click", async () => {
-  let recipes = await getRecipeIDs(stringToSearch());
-  if (recipes != "") {
-    console.log(recipes);
-    displayRecipesFromSearch(recipes);
-  }
+    let recipes = await getRecipeIDs(stringToSearch());
+    if (recipes !== "") {
+        console.log(recipes);
+        divRecipes.style.display = 'block'
+        displayRecipesFromSearch(recipes);
+    }
 });
 
-//removing item from ingredients list
-function removeIngredient(item) {
-  ingredientContainer.removeChild(document.querySelector(`#${item}`));
-  let i = ingredientsArr.indexOf(item);
-  ingredientsArr.splice(i, 1);
+// Cook at home, hides main button div and shows ingredient div
+btnCookAtHome.addEventListener('click', () => {
+    let divButton = document.getElementById("divButtons");
+    divButton.style.display = 'none';
+    let divIngredients = document.getElementById("divIngredients");
+    divIngredients.style.display = 'block';
+})
 
-  console.log(ingredientsArr);
-}
-
-// Displaying Full recipe in separate div (need to make it as a Modal)
-async function displayFullRecipe(id) {
-  let fullRecipeObj = await getRecipeFromID(id);
-  let allIngredientsList = fullRecipeObj.extendedIngredients.map((e) => {
-    return `<li class="recipeIngredientsList">${e.name}</li>`;
-  });
-  console.log("allIngredientsList = " + allIngredientsList);
-  let fullRecipe = `
-    <img src="${fullRecipeObj.image}"/>
-    <h2>${fullRecipeObj.title}</h2>
-    <ul>${allIngredientsList.join("")}</ul>
-    <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
-    <p class='instructions'>${fullRecipeObj.instructions}</p>
-    <p class='summary'>${fullRecipeObj.summary}</p>
-  `;
-  fullRecipeContainer.innerHTML = fullRecipe;
-  console.log(fullRecipeObj);
-}
+// update label with slider value for number of recipes to return in search
+sldFilterRange.addEventListener('input', function() {
+    lblRangeFilter.innerHTML = this.value;
+})
