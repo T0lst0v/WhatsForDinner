@@ -110,6 +110,10 @@ body {
   border-radius: 5px;
   font-size: x-large;
   border: 1px solid #d5d9d9;
+  cursor: pointer;
+}
+.button:hover {
+  box-shadow: 0 0 0 0 black;
 }
 
 #lblRangeFilter {
