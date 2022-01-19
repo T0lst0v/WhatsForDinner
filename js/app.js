@@ -92,7 +92,7 @@ function displayIngredient(ingredient) {
   txtIngredient.classList.remove("error");
   console.log("matching true");
   let newIngredientLi = `
-    <li class="liIngredient" id="${ingredient}">
+    <li class="liIngredient" id="${removeSpaces(ingredient)}">
         ${ingredient}
         <img src="images/x_mark.png" class="removeImage" onclick = "removeIngredient('${ingredient}')" 
             alt="remove ingredient clickable image button"/>
@@ -105,10 +105,9 @@ function displayIngredient(ingredient) {
 //removing item from ingredients list
 function removeIngredient(item) {
   console.log(`removed: ${item}`);
-  ulIngredients.removeChild(document.querySelector(`#${item}`));
+  ulIngredients.removeChild(document.getElementById(`${removeSpaces(item)}`));
   let i = ingredientsArr.indexOf(item);
   ingredientsArr.splice(i, 1);
-
   console.log(ingredientsArr);
 }
 
