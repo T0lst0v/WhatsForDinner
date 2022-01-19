@@ -1,8 +1,8 @@
 :root {
   --background-color: #f6f6f6;
   --txt-bg-color: white;
-  --accent1-color: #ffb5b5;
-  --accent2-color: #78d47a;
+  --accent1-color: #df7c7c;
+  --accent2-color: #7ccc7e; /* 78d47a */
   --nonactive-color: rgb(184, 184, 184);
   --borders-color: rgb(199, 199, 199);
   --borders-color-dark: rgb(126, 126, 126);
@@ -11,11 +11,16 @@
   --shadow-box: rgb(130, 130, 130);
 
   --ingredient-container-width: 70%;
+
+  --font-family-h1: "Style Script", cursive;
+  --font-family-h: "Cabin", sans-serif;
+  --font-family-p: "Roboto", sans-serif;
 }
 
 html,
 body {
   height: 100%;
+  font-family: var(--font-family-p);
 }
 
 html {
@@ -33,17 +38,11 @@ body {
 }
 
 .button {
-  background-color: #fff;
-  box-shadow: rgba(213, 217, 217, 1) 0 5px 10px 0;
-  font-family: "Segoe UI Semibold", sans-serif;
+  font-family: var(--font-family-h);
   padding: 15px 40px;
   border-radius: 5px;
   font-size: x-large;
-  border: 1px solid #d5d9d9;
   cursor: pointer;
-}
-.button:hover {
-  box-shadow: 0 0 0 0 black;
 }
 
 #mainDiv {
@@ -51,6 +50,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  max-width: 800px;
   user-select: none;
   -webkit-user-select: none;
   min-height: 100vh;
@@ -58,7 +58,7 @@ body {
 
 /* header - text Hero */
 #divTitle {
-  font-family: "Dancing Script", cursive;
+  font-family: var(--font-family-h1);
   font-size: 70px;
   margin-bottom: 20px;
   margin-top: 120px;
@@ -75,9 +75,21 @@ body {
 
 /* navigation menu */
 #divButtons {
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px -15px rgb(0, 0, 0);
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
+}
+#divButtons .button {
+  background-color: var(--txt-bg-color);
+  border: solid 2px var(--txt-bg-color);
+}
+
+#divButtons .button:hover {
+  border-top: solid 2px var(--accent1-color);
+  border-bottom: solid 2px var(--accent1-color);
+  color: var(--accent1-color);
 }
 
 #btnDineOut {
@@ -92,26 +104,6 @@ body {
 #btnCookAtHome {
   border-radius: 11px 0 0 11px;
   padding-left: 100px;
-}
-
-#btnDineOut:hover {
-  background-color: var(--button-hover-background-color);
-}
-
-#btnCookAtHome:hover {
-  background-color: var(--button-hover-background-color);
-}
-
-#btnAddIngredient:hover {
-  background-color: var(--button-hover-background-color);
-}
-
-#btnOrderOnline:hover {
-  background-color: var(--button-hover-background-color);
-}
-
-#btnAddIngredient:hover {
-  background-color: var(--button-hover-background-color);
 }
 
 /* search */
@@ -131,7 +123,7 @@ body {
   height: 40px;
 }
 #txtAddIngredient {
-  font-size: x-large;
+  font-size: 18px;
   width: 100%;
   border-radius: 10px 0 0 10px;
   border: 1px solid var(--borders-color);
@@ -141,12 +133,16 @@ body {
 #btnAddIngredient {
   border-radius: 0 10px 10px 0;
   border: var(--borders-color);
-  font-size: x-large;
-  width: 100px;
+  font-size: 18px;
+  width: 120px;
   /* padding: 5px 35px 3px 25px; */
-  background: var(--accent1-color);
+  background: var(--accent2-color);
+  color: var(--txt-bg-color);
+  cursor: pointer;
 }
-
+#btnAddIngredient:hover {
+  background-color: var(--accent1-color);
+}
 #txtAddIngredient.error {
   border: solid 1px red;
 }
@@ -170,10 +166,6 @@ body {
   font-weight: 550;
   margin-bottom: 10px;
   box-shadow: 0 5px 10px 0 var(--shadow-box);
-}
-.chkFilter {
-  margin-right: 50px;
-  margin-bottom: 20px;
 }
 
 .ingredientListItem {
@@ -214,7 +206,32 @@ body {
 }
 
 #divFilters {
+  display: flex;
+  flex-direction: row;
   text-align: center;
+  margin: 20px;
+  justify-content: center;
+}
+#divFilters .spaceBetween {
+  display: block;
+  width: 40px;
+}
+
+.chkFilter {
+  /* margin-right: 50px;
+  margin-bottom: 20px; */
+
+  border: 2px solid var(--txt-bg-color);
+  box-shadow: 0 0 0 1px var(--accent2-color);
+  appearance: none;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: var(--txt-bg-color);
+  transition: all ease-in 0.2s;
+}
+.chkFilter:checked {
+  background-color: var(--accent2-color);
 }
 
 #divFindRecipesButton {
@@ -228,10 +245,14 @@ body {
   font-size: large;
   height: 40px;
   /* padding: 5px 35px 3px 25px; */
-  background: var(--accent1-color);
+  background: var(--accent2-color);
   width: 30%;
+  color: var(--txt-bg-color);
+  cursor: pointer;
 }
-
+#btnFindRecipes:hover {
+  background-color: var(--accent1-color);
+}
 /* Content - Recipes */
 #divRecipes {
   display: none;

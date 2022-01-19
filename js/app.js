@@ -3,6 +3,10 @@ const urlRecipe = "https://api.spoonacular.com/recipes/";
 //fields
 const divRecipes = document.getElementById("divRecipes");
 const txtIngredient = document.getElementById("txtAddIngredient");
+const fullRecipe = document.getElementById("fullRecipe");
+const maxUsed = document.getElementById("maxUsed");
+const minMissed = document.getElementById("minMissed");
+
 //buttons
 const btnAddIngredient = document.getElementById("btnAddIngredient");
 const btnFindRecipe = document.getElementById("btnFindRecipes");
@@ -27,7 +31,7 @@ const lettersOnly = /^[a-zA-Z]/g;
 
 // Fetching Ingredient ID
 async function getRecipeIDs(ingredients, number) {
-  let url = `${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=${number}`;
+  let url = `${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&ignorePantry=true${getSortingString()}&number=${number}`;
   console.log("ids url" + url);
   const response = await fetch(url);
   console.log("response= " + response);
@@ -51,7 +55,7 @@ async function displayFullRecipe(id) {
     return `<li class="recipeIngredientsList">${e.original}</li>`;
   });
   console.log("allIngredientsList = " + allIngredientsList);
-  divRecipes.innerHTML = `
+  fullRecipe.innerHTML = `
     <img src="${fullRecipeObj.image}" alt="${fullRecipeObj}"/>
     <h2>${fullRecipeObj.title}</h2>
     <ul>${allIngredientsList.join("")}</ul>
@@ -175,3 +179,14 @@ sldFilterRange.addEventListener("input", function () {
   lblRangeFilter.innerHTML = this.value;
   console.log(this.value);
 });
+
+function getSortingString() {
+  let sortString = maxUsed.checked || minMissed.checked ? "&ranking=" : "";
+  if (maxUsed.checked) {
+    sortString += "1";
+  } else if (minMissed.checked) {
+    sortString += "2";
+  }
+  console.log(sortString);
+  return sortString;
+}

@@ -5,23 +5,30 @@
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/styles.css">
-    <style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600&family=Roboto:wght@100;300;400&family=Style+Script&display=swap"
+        rel="stylesheet">
+
+
+    <!-- <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;504&display=swap');
-    </style>
-    <title>Whats For Dinner?</title>
+    </style> -->
+    <title>What's for Dinner?</title>
 </head>
 
 <body>
     <div id="mainDiv">
         <div id="divTitle">
-            <strong>Whats For Dinner?</strong>
+            <strong>What's for Dinner?</strong>
         </div>
         <div id="contentWrapper">
 
             <div id="divButtons">
-                <button class="button" id="btnCookAtHome">Cook at Home</button>
-                <button class="button" id="btnDineOut">Dine Out</button>
-                <button class="button" id="btnOrderOnline">Order Online</button>
+                <div class="button" id="btnCookAtHome">Cook at Home</div>
+                <div class="button" id="btnDineOut">Dine Out</div>
+                <div class="button" id="btnOrderOnline">Order Online</div>
             </div>
 
             <div id="divIngredients">
@@ -37,12 +44,12 @@
 
 
                 <div id="divFilters">
-                    <label for="glutenFree">gluten free</label>
-                    <input type="checkbox" id="glutenFree" class="chkFilter" name="filters">
-                    <label for="ketogenic">ketogenic</label>
-                    <input type="checkbox" id="ketogenic" class="chkFilter" name="filters">
-                    <label for="vegetarian">vegetarian</label>
-                    <input type="checkbox" id="vegetarian" class="chkFilter" name="filters">
+                    <label for="maxUsed">max used ingredients</label>
+                    <input type="radio" id="maxUsed" class="chkFilter" name="filters" checked>
+                    <span class="spaceBetween"> </span>
+                    <label for="minMissed">min missing ingredients</label>
+                    <input type="radio" id="minMissed" class="chkFilter" name="filters">
+
                 </div>
 
                 <div id="divSlider">
@@ -61,6 +68,9 @@
                 <!-- JS insert -->
             </div>
 
+            <div id="fullRecipe">
+                <!-- JS insert -->
+            </div>
         </div>
 
         <footer id="divLogo">
