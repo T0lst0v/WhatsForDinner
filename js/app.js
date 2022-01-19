@@ -14,6 +14,7 @@ const ulIngredients = document.getElementById("ulIngredients");
 const ingredientContainer = document.querySelector("#ingredientContainer");
 // const divRecipes = document.querySelector("#divRecipes");
 const btnCookAtHome = document.getElementById("btnCookAtHome");
+const btnDineOut = document.getElementById("btnDineOut");
 const sldFilterRange = document.getElementById("rngFilter");
 const lblRangeFilter = document.getElementById("lblRangeFilter");
 //variables
@@ -35,8 +36,7 @@ async function getRecipeIDs(ingredients, number) {
   console.log("ids url" + url);
   const response = await fetch(url);
   console.log("response= " + response);
-  const recipeIDs = await response.json();
-  return recipeIDs;
+  return recipeIDs = await response.json();
 }
 
 // Fetching Recipes of ID
@@ -44,8 +44,7 @@ async function getRecipeFromID(recipeID) {
   let url = `${urlRecipe}${recipeID}/information?apiKey=${apiKey}`;
   console.log(`Recipe from id link is: ${url}`);
   const response = await fetch(url);
-  const recipes = await response.json();
-  return recipes;
+  return recipes = await response.json();
 }
 
 // Displaying Full recipe in separate div (need to make it as a Modal)
@@ -150,7 +149,7 @@ txtIngredient.addEventListener("keyup", function (event) {
 
 //Search recipes with given ingredients
 btnFindRecipe.addEventListener("click", async () => {
-  if (ingredientsArr == "") {
+  if (ingredientsArr === "") {
     console.log("empty");
     return;
   }
@@ -172,7 +171,23 @@ btnCookAtHome.addEventListener("click", () => {
   //   divButton.style.display = "none";
   let divIngredients = document.getElementById("divIngredients");
   divIngredients.style.display = "block";
+  let divLogo = document.getElementById("divLogo");
+  divLogo.style.display = 'flex';
+  let divDineOut = document.getElementById("divDineOutMain");
+  divDineOut.style.display = 'none';
 });
+
+btnDineOut.addEventListener('click', () => {
+    let divButton = document.getElementById("divIngredients");
+    divButton.style.display = 'none';
+    let divDineOut = document.getElementById("divDineOutMain");
+    divDineOut.style.display = 'block';
+    let divLogo = document.getElementById("divLogo");
+    divLogo.style.display = 'none';
+    wait = false; // changing wait on dineOut.js so map can now init
+  searchResults = [];
+    initMap();
+})
 
 // update label with slider value for number of recipes to return in search
 sldFilterRange.addEventListener("input", function () {
