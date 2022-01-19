@@ -1,6 +1,16 @@
 :root {
+  --background-color: #f6f6f6;
+  --txt-bg-color: white;
+  --accent1-color: #ffb5b5;
+  --accent2-color: #78d47a;
+  --nonactive-color: rgb(184, 184, 184);
+  --borders-color: rgb(199, 199, 199);
+  --borders-color-dark: rgb(126, 126, 126);
   --button-hover-background-color: #d5d9d9;
-  --shadow-box: rgba(213, 217, 217, 1) 2px 5px 10px 2px;
+
+  --shadow-box: rgb(130, 130, 130);
+
+  --ingredient-container-width: 70%;
 }
 
 html,
@@ -11,95 +21,15 @@ body {
 html {
   display: table;
   margin: auto;
+  /* overflow-x: hidden; */
 }
 
 body {
   display: table-cell;
   vertical-align: middle;
-  background-color: ghostwhite;
-}
-
-#mainDiv {
-  position: relative;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  user-select: none;
-  -webkit-user-select: none;
-  min-height: 100vh;
-}
-
-#contentContainter {
-  padding-bottom: 400px;
-}
-#divTitle {
-  font-family: "Dancing Script", cursive;
-  font-size: 70px;
-  margin-bottom: 20px;
-  margin-top: 120px;
-  text-align: center;
-}
-
-#divIngredients {
-  display: none;
-}
-
-#divRecipes {
-  display: none;
-}
-
-#btnAddIngredient {
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  border: 1px solid #d5d9d9;
-  font-size: x-large;
-  padding: 5px 35px 3px 25px;
-  background: #f9cdcd;
-}
-
-#txtAddIngredient {
-  font-size: x-large;
-  min-width: 350px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border: 1px solid #d5d9d9;
-  padding: 5px 25px 3px 20px;
-}
-
-#txtAddIngredient.error {
-  border: solid 1px red;
-}
-
-#ulIngredients {
-  list-style-type: none;
-  min-width: 450px;
-  padding: 0;
-}
-
-#btnFindRecipes {
-  border-radius: 10px;
-  border: 1px solid #d5d9d9;
-  font-size: large;
-  padding: 5px 35px 3px 25px;
-  background: #f9cdcd;
-  width: 80%;
-}
-
-#divFindRecipesButton {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.liIngredient {
-  background-color: white;
-  padding-top: 5px;
-  padding-left: 25px;
-  padding-bottom: 5px;
-  border-radius: 10px;
-  font-size: medium;
-  font-weight: 550;
-  margin-bottom: 10px;
-  box-shadow: rgba(213, 217, 217, 1) 0 5px 10px 0;
+  background-color: var(--background-color);
+  width: 100%;
+  /* overflow-y: scroll; */
 }
 
 .button {
@@ -116,61 +46,34 @@ body {
   box-shadow: 0 0 0 0 black;
 }
 
-#lblRangeFilter {
-  border-radius: 8px;
-  border: 1px solid grey;
-  padding-top: 3px;
-  padding-right: 2px;
-  padding-left: 4px;
-  padding-bottom: 2px;
-  margin-top: -4px;
-}
-
-#divSlider {
+#mainDiv {
+  position: relative;
   display: flex;
-  flex-direction: row;
+  flex-flow: column nowrap;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  min-height: 100vh;
 }
 
-#divFilters {
+/* header - text Hero */
+#divTitle {
+  font-family: "Dancing Script", cursive;
+  font-size: 70px;
+  margin-bottom: 20px;
+  margin-top: 120px;
   text-align: center;
 }
 
-.chkFilter {
-  margin-right: 50px;
-  margin-bottom: 20px;
+/* main content */
+#contentWrapper {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  padding-bottom: 400px;
 }
 
-.slider {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 15px;
-  border-radius: 5px;
-  background: #d3d3d3;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s;
-  transition: opacity 0.2s;
-  margin-right: 10px;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #04aa6d;
-  cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  background: #04aa6d;
-  cursor: pointer;
-}
-
+/* navigation menu */
 #divButtons {
   display: flex;
   flex-direction: row;
@@ -211,6 +114,68 @@ body {
   background-color: var(--button-hover-background-color);
 }
 
+/* search */
+#divIngredients {
+  display: none;
+  margin-top: 40px;
+  /* display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  justify-items: center; */
+}
+#inputContainer {
+  margin: auto;
+  display: flex;
+  width: var(--ingredient-container-width);
+  height: 40px;
+}
+#txtAddIngredient {
+  font-size: x-large;
+  width: 100%;
+  border-radius: 10px 0 0 10px;
+  border: 1px solid var(--borders-color);
+  border-right: none;
+  padding: 0 10px;
+}
+#btnAddIngredient {
+  border-radius: 0 10px 10px 0;
+  border: var(--borders-color);
+  font-size: x-large;
+  width: 100px;
+  /* padding: 5px 35px 3px 25px; */
+  background: var(--accent1-color);
+}
+
+#txtAddIngredient.error {
+  border: solid 1px red;
+}
+
+#ulIngredients {
+  /* display: flex;
+  flex-direction: column;
+  align-content: space-around; */
+  list-style-type: none;
+  width: var(--ingredient-container-width);
+  margin: 30px auto;
+  padding: 0;
+}
+.liIngredient {
+  background-color: var(--txt-bg-color);
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  font-size: medium;
+  font-weight: 550;
+  margin-bottom: 10px;
+  box-shadow: 0 5px 10px 0 var(--shadow-box);
+}
+.chkFilter {
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
+
 .ingredientListItem {
   margin-bottom: 8px;
   box-shadow: var(--shadow-box);
@@ -224,24 +189,78 @@ body {
   padding-right: 8px;
 }
 
+#divSlider {
+  display: flex;
+  flex-direction: row;
+  width: var(--ingredient-container-width);
+  margin: auto;
+  touch-action: none;
+}
+#rngFilter {
+  width: 100%;
+  background-color: var(--background-color);
+  /* padding-right: 5px; */
+}
+
+#lblRangeFilter {
+  border-radius: 50%;
+  margin-left: 6px;
+  background-color: var(--txt-bg-color);
+  border: 1px solid var(--borders-color);
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+
+#divFilters {
+  text-align: center;
+}
+
+#divFindRecipesButton {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#btnFindRecipes {
+  border-radius: 10px;
+  border: 1px solid var(--borders-color);
+  font-size: large;
+  height: 40px;
+  /* padding: 5px 35px 3px 25px; */
+  background: var(--accent1-color);
+  width: 30%;
+}
+
+/* Content - Recipes */
+#divRecipes {
+  display: none;
+}
+
 #removeButton {
   background-color: transparent;
   border: none;
   font-size: large;
 }
 
+/* Footer */
+#divLogo {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
 #imgLogo {
   margin: auto;
   max-width: 400px;
   max-height: 400px;
 }
-
-#divLogo {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+#gitHubLogo,
+a {
+  margin: 10px auto 20px;
+  height: 20px;
+  width: 20px;
 }
 
 @media (max-width: 650px) {

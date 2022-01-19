@@ -8,7 +8,7 @@ const btnAddIngredient = document.getElementById("btnAddIngredient");
 const btnFindRecipe = document.getElementById("btnFindRecipes");
 const ulIngredients = document.getElementById("ulIngredients");
 const ingredientContainer = document.querySelector("#ingredientContainer");
-const fullRecipeContainer = document.querySelector("#fullRecipeContainer");
+// const divRecipes = document.querySelector("#divRecipes");
 const btnCookAtHome = document.getElementById("btnCookAtHome");
 const sldFilterRange = document.getElementById("rngFilter");
 const lblRangeFilter = document.getElementById("lblRangeFilter");
@@ -26,20 +26,21 @@ const lettersOnly = /^[a-zA-Z]+$/g;
 */
 
 // Fetching Ingredient ID
-async function getRecipeIDs(ingredients) {
-  const response = await fetch(`${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=10`);
+async function getRecipeIDs(ingredients, number) {
+  let url = `${urlRecipe}findByIngredients?apiKey=${apiKey}&ingredients=${ingredients}&number=${number}`;
+  console.log("ids url" + url);
+  const response = await fetch(url);
   console.log("response= " + response);
   const recipeIDs = await response.json();
-  console.log("recipeIDs= " + recipeIDs);
   return recipeIDs;
 }
 
 // Fetching Recipes of ID
 async function getRecipeFromID(recipeID) {
-  const response = await fetch(`${urlRecipe}${recipeID}/information?apiKey=${apiKey}`);
-  console.log(`link is: ${urlRecipe}${recipeID}/information?apiKey=${apiKey}`);
+  let url = `${urlRecipe}${recipeID}/information?apiKey=${apiKey}`;
+  console.log(`Recipe from id link is: ${url}`);
+  const response = await fetch(url);
   const recipes = await response.json();
-  console.log("recipes: " + recipes);
   return recipes;
 }
 
@@ -47,10 +48,10 @@ async function getRecipeFromID(recipeID) {
 async function displayFullRecipe(id) {
   let fullRecipeObj = await getRecipeFromID(id);
   let allIngredientsList = fullRecipeObj.extendedIngredients.map((e) => {
-    return `<li class="recipeIngredientsList">${e.name}</li>`;
+    return `<li class="recipeIngredientsList">${e.original}</li>`;
   });
   console.log("allIngredientsList = " + allIngredientsList);
-  fullRecipeContainer.innerHTML = `
+  divRecipes.innerHTML = `
     <img src="${fullRecipeObj.image}" alt="${fullRecipeObj}"/>
     <h2>${fullRecipeObj.title}</h2>
     <ul>${allIngredientsList.join("")}</ul>
@@ -65,10 +66,10 @@ async function displayFullRecipe(id) {
 function displayRecipesFromSearch(recipes) {
   console.log("logging recipes search");
   console.log(recipes);
-
+  divRecipes.innerHTML = "";
   recipes.forEach((recipe) => {
     let recipeContainer = `
-        <ul style="listOfTitles">
+        <ul style="listOfTitles">&times;
             <li>${recipe.title}</li>
             <li><img src=${recipe.image} alt='image of '${recipe.title}/></li>
             <li>${recipe.likes} likes</li>
@@ -132,25 +133,33 @@ btnAddIngredient.addEventListener("click", () => {
 
 // Ingredients Input on Enter Key
 txtIngredient.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
+  if (event.key === "Enter") {
     btnAddIngredient.click();
   }
 });
 
 //Search recipes with given ingredients
 btnFindRecipe.addEventListener("click", async () => {
-  let recipes = await getRecipeIDs(stringToSearch());
+  if (ingredientsArr == "") {
+    console.log("empty");
+    return;
+  }
+  let number = sldFilterRange.value;
+  console.log("sending number = " + number);
+  let recipes = await getRecipeIDs(stringToSearch(), number);
   if (recipes !== "") {
-    console.log(recipes);
+    console.log("recipes=" + recipes);
     divRecipes.style.display = "block";
     displayRecipesFromSearch(recipes);
+  } else {
+    console.log("empty arr");
   }
 });
 
-// Cook at home, hides main button div and shows ingredient div
+// Cook at home shows ingredient div ( hides main button div )
 btnCookAtHome.addEventListener("click", () => {
-  let divButton = document.getElementById("divButtons");
-  divButton.style.display = "none";
+  //   let divButton = document.getElementById("divButtons");
+  //   divButton.style.display = "none";
   let divIngredients = document.getElementById("divIngredients");
   divIngredients.style.display = "block";
 });
@@ -158,4 +167,5 @@ btnCookAtHome.addEventListener("click", () => {
 // update label with slider value for number of recipes to return in search
 sldFilterRange.addEventListener("input", function () {
   lblRangeFilter.innerHTML = this.value;
+  console.log(this.value);
 });
