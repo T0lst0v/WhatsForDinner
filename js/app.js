@@ -14,7 +14,7 @@ const sldFilterRange = document.getElementById("rngFilter");
 const lblRangeFilter = document.getElementById("lblRangeFilter");
 //variables
 const ingredientsArr = [];
-const lettersOnly = /^[a-zA-Z]+$/g;
+const lettersOnly = /^[a-zA-Z]/g;
 
 /*
  example GET for find by ingredients
@@ -97,7 +97,8 @@ function displayIngredient(ingredient) {
         <img src="images/x_mark.png" class="removeImage" onclick = "removeIngredient('${ingredient}')" 
             alt="remove ingredient clickable image button"/>
     </li>`;
-  ingredientsArr.push(ingredient);
+
+  ingredientsArr.push(removeSpaces(ingredient));
   ulIngredients.insertAdjacentHTML("beforeend", newIngredientLi);
 }
 
@@ -123,6 +124,12 @@ function getInputIngredient() {
 function stringToSearch() {
   console.log("ingredientsArr: " + ingredientsArr.join(",+"));
   return ingredientsArr.join(",+");
+}
+
+// trim and replace spaces in input of more than 1 word
+function removeSpaces(val) {
+  let noSpaces = val.trim(); //extra step if space needed to be replaced (not just removed)
+  return noSpaces.split(" ").join("+");
 }
 
 // Ingredients Input on Click
