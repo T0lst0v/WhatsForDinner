@@ -186,7 +186,7 @@ function displayRestaurantInfo(result, status) {
     divReview.innerHTML = `<p>${result.reviews[currentReview].text}</p>`;
 
     // next and previous buttons
-    divReviewButtons.innerHTML = `<a href='javascript:void(0);' onclick="previousReview()">Previous Review</a> - <a href='javascript:void(0);' onclick="nextReview()">Next Review</a>`;
+    divReviewButtons.innerHTML = `<a href='javascript:void(0);' class="pointer" onclick="previousReview()">Previous Review</a> - <a href='javascript:void(0);' class="pointer" onclick="nextReview()">Next Review</a>`;
     let p = "";
     let nmbOfPhotos = 0;
     if (result.photos) nmbOfPhotos = result.photos.length;
