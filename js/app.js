@@ -6,7 +6,6 @@ const txtIngredient = document.getElementById("txtAddIngredient");
 const fullRecipe = document.getElementById("fullRecipe");
 const maxUsed = document.getElementById("maxUsed");
 const minMissed = document.getElementById("minMissed");
-
 //buttons
 const btnAddIngredient = document.getElementById("btnAddIngredient");
 const btnFindRecipe = document.getElementById("btnFindRecipes");
@@ -36,7 +35,7 @@ async function getRecipeIDs(ingredients, number) {
   console.log("ids url" + url);
   const response = await fetch(url);
   console.log("response= " + response);
-  return recipeIDs = await response.json();
+  return (recipeIDs = await response.json());
 }
 
 // Fetching Recipes of ID
@@ -44,7 +43,7 @@ async function getRecipeFromID(recipeID) {
   let url = `${urlRecipe}${recipeID}/information?apiKey=${apiKey}`;
   console.log(`Recipe from id link is: ${url}`);
   const response = await fetch(url);
-  return recipes = await response.json();
+  return (recipes = await response.json());
 }
 
 // Displaying Full recipe in separate div (need to make it as a Modal)
@@ -137,6 +136,7 @@ function removeSpaces(val) {
 // Ingredients Input on Click
 btnAddIngredient.addEventListener("click", () => {
   displayIngredient(getInputIngredient());
+  autoCompleteBox.style.display = "none";
   console.log(ingredientsArr);
 });
 
@@ -172,22 +172,22 @@ btnCookAtHome.addEventListener("click", () => {
   let divIngredients = document.getElementById("divIngredients");
   divIngredients.style.display = "block";
   let divLogo = document.getElementById("divLogo");
-  divLogo.style.display = 'flex';
+  divLogo.style.display = "flex";
   let divDineOut = document.getElementById("divDineOutMain");
-  divDineOut.style.display = 'none';
+  divDineOut.style.display = "none";
 });
 
-btnDineOut.addEventListener('click', () => {
-    let divButton = document.getElementById("divIngredients");
-    divButton.style.display = 'none';
-    let divDineOut = document.getElementById("divDineOutMain");
-    divDineOut.style.display = 'block';
-    let divLogo = document.getElementById("divLogo");
-    divLogo.style.display = 'none';
-    wait = false; // changing wait on dineOut.js so map can now init
+btnDineOut.addEventListener("click", () => {
+  let divButton = document.getElementById("divIngredients");
+  divButton.style.display = "none";
+  let divDineOut = document.getElementById("divDineOutMain");
+  divDineOut.style.display = "block";
+  let divLogo = document.getElementById("divLogo");
+  divLogo.style.display = "none";
+  wait = false; // changing wait on dineOut.js so map can now init
   searchResults = [];
-    initMap();
-})
+  initMap();
+});
 
 // update label with slider value for number of recipes to return in search
 sldFilterRange.addEventListener("input", function () {

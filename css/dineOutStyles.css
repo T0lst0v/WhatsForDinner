@@ -12,7 +12,7 @@ body {
 }
 
 #divMap {
-  height: 800px;
+  height: 100%;
   width: 100%;
   background-color: grey;
   margin-top: 10px;
