@@ -41,7 +41,7 @@ function initMap() {
                 };
                 map = new google.maps.Map(document.getElementById("divMap"), {
                     center: userLocation,
-                    zoom: 13,
+                    zoom: 15,
                 });
                 mapBounds.extend(userLocation); // change map focus
 
@@ -114,7 +114,7 @@ function displayRestaurants() {
             ulRestaurants.insertAdjacentHTML(
                 "beforeend",`
             <li>
-                <a href='javascript:void();' onclick="updateRestaurantDisplay('${result.name}')">
+                <a href='javascript:void(0);' onclick="updateRestaurantDisplay('${result.name}')">
                     ${result.name} (${result.rating} \u272e)</a>
             </li>`);
         });
@@ -144,6 +144,12 @@ function moveMap(restaurant) {
 
     // place marker
     marker.position = restaurant.geometry.location;
+
+
+    easingAnimator.easeProp({
+        lat: point.lat(),
+        lng: point.lng()
+    }, points[i]);
 
     // pan map
     map.panTo(restaurant.geometry.location);
@@ -187,7 +193,7 @@ function displayRestaurantInfo(result, status) {
     divReview.innerHTML = `<p>${result.reviews[currentReview].text}</p>`;
 
     // next and previous buttons
-    divReviewButtons.innerHTML = `<a onclick="previousReview()">Previous Review</a> - <a onclick="nextReview()">Next Review</a>`;
+    divReviewButtons.innerHTML = `<a href='javascript:void(0);' onclick="previousReview()">Previous Review</a> - <a href='javascript:void(0);' onclick="nextReview()">Next Review</a>`;
     let p = "";
     let nmbOfPhotos = 0;
     if (result.photos) nmbOfPhotos = result.photos.length;
