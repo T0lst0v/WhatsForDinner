@@ -107,7 +107,7 @@ body {
   padding-left: 100px;
 }
 
-/* search */
+/* search ingredient */
 #divIngredients {
   display: none;
   margin-top: 40px;
@@ -148,7 +148,30 @@ body {
 #txtAddIngredient.error {
   border: solid 1px red;
 }
+/* Drop Down Autocomplete */
+#autoCompleteBox {
+  display: none;
+  position: absolute;
+  width: 80%;
+  top: 42px;
+  max-height: 160px;
+  background-color: var(--txt-bg-color);
+  overflow-x: scroll;
+  margin: 0;
+  /* padding: 6px; */
+  border: 1px solid var(--borders-color);
+  border-radius: 10px;
+}
 
+#autoCompleteBox p {
+  padding: 3px 6px;
+  margin: 0;
+}
+#autoCompleteBox p:hover {
+  background-color: var(--accent2-color);
+}
+
+/* Ingredients List */
 #ulIngredients {
   /* display: flex;
   flex-direction: column;
@@ -183,6 +206,7 @@ body {
   padding-right: 8px;
 }
 
+/* Sorting */
 #divSlider {
   display: flex;
   flex-direction: row;
@@ -255,6 +279,7 @@ body {
 #btnFindRecipes:hover {
   background-color: var(--accent1-color);
 }
+
 /* Content - Recipes */
 #divRecipes {
   display: none;
