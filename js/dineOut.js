@@ -11,7 +11,6 @@ let reviews = [];
 let currentReview = 0;
 let currentCuisine = "restaurant";
 let imageSlideIndex = 1;
-let imageSlideToggle = false; // toggles between image row and singe image
 let ulRestaurants = document.getElementById("ulRestaurants");
 let divReview = document.getElementById("divReview");
 let selCuisine = document.getElementById("selCuisine");
@@ -145,12 +144,6 @@ function moveMap(restaurant) {
     // place marker
     marker.position = restaurant.geometry.location;
 
-
-    easingAnimator.easeProp({
-        lat: point.lat(),
-        lng: point.lng()
-    }, points[i]);
-
     // pan map
     map.panTo(restaurant.geometry.location);
 }
@@ -201,7 +194,7 @@ function displayRestaurantInfo(result, status) {
         let photo = result.photos[c];
         p += `
         <div class="mySlides fade">
-            <img src="${photo.getUrl()}" onclick="slideToggle()" class="foodImage" alt="picture from restaurant"/>                
+            <img src="${photo.getUrl()}" class="foodImage" alt="picture from restaurant"/>                
         </div>`;
     }
 
@@ -209,6 +202,8 @@ function displayRestaurantInfo(result, status) {
     divPhotos.innerHTML += `
     <a class="prev" id="prev" onclick="changeSlide(-1)">&#10094;</a>
     <a class="next" id="next" onclick="changeSlide(1)">&#10095;</a>`;
+
+    showSlides(1);
 }
 
 // scrolls to the next review
@@ -247,26 +242,6 @@ function changeCuisine() {
 // change the image slide showing
 function changeSlide(n) {
     showSlides((imageSlideIndex += n));
-}
-
-// toggle between image bar and one big image
-function slideToggle() {
-    imageSlideToggle = !imageSlideToggle;
-
-    if (imageSlideToggle) {
-        showSlides(imageSlideIndex);
-    } else {
-        let slides = document.getElementsByClassName("mySlides");
-        const prev = document.getElementById('prev');
-        const next = document.getElementById('next');
-
-        prev.style.display = 'none';
-        next.style.display = 'none';
-
-        // display all images
-        for (let i = 0; i < slides.length; i++)
-            slides[i].style.display = "block";
-    }
 }
 
 // shows a big image slide from the image bar
