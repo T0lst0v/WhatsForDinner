@@ -3,7 +3,6 @@ const urlRecipe = "https://api.spoonacular.com/recipes/";
 //fields
 const divRecipes = document.getElementById("divRecipes");
 const txtIngredient = document.getElementById("txtAddIngredient");
-const fullRecipe = document.getElementById("fullRecipe");
 const maxUsed = document.getElementById("maxUsed");
 const minMissed = document.getElementById("minMissed");
 //buttons
@@ -26,19 +25,19 @@ const fullRecipeContainer = document.querySelector("#fullRecipeContainer");
 const closeModal = document.querySelector("#closeModal");
 
 // event listener to close recipe card
-closeModal.addEventListener('click', function() {
-  fullRecipeContainer.style.display = "none"
-})
+closeModal.addEventListener("click", function () {
+  fullRecipeContainer.style.display = "none";
+});
 
 // When the modal is shown, we want a fixed body
-document.body.style.position = 'fixed';
+document.body.style.position = "fixed";
 document.body.style.top = `-${window.scrollY}px`;
 
 // When the modal is hidden, we want to remain at the top of the scroll position
 const scrollY = document.body.style.top;
-document.body.style.position = '';
-document.body.style.top = '';
-window.scrollTo(0, parseInt(scrollY || '0') * -1);
+document.body.style.position = "";
+document.body.style.top = "";
+window.scrollTo(0, parseInt(scrollY || "0") * -1);
 
 /*
  example GET for find by ingredients
@@ -55,11 +54,8 @@ async function getRecipeIDs(ingredients, number) {
   console.log("ids url" + url);
   const response = await fetch(url);
   console.log("response= " + response);
-<<<<<<< HEAD
-  return (recipeIDs = await response.json());
-=======
+  // return (recipeIDs = await response.json());
   return await response.json();
->>>>>>> c2b485d93920d7f65cc4349fb53b589fb16b527c
 }
 
 // Fetching Recipes of ID
@@ -67,11 +63,8 @@ async function getRecipeFromID(recipeID) {
   let url = `${urlRecipe}${recipeID}/information?apiKey=${apiKey}`;
   console.log(`Recipe from id link is: ${url}`);
   const response = await fetch(url);
-<<<<<<< HEAD
-  return (recipes = await response.json());
-=======
+  // return (recipes = await response.json());
   return await response.json();
->>>>>>> c2b485d93920d7f65cc4349fb53b589fb16b527c
 }
 
 // TODO add event listener for modal to prevent scrolling here
@@ -82,7 +75,7 @@ async function displayFullRecipe(id) {
     return `<li class="recipeIngredientsList">${e.original}</li>`;
   });
   console.log("allIngredientsList = " + allIngredientsList);
-  fullRecipe.innerHTML = `
+  modalContent.innerHTML = `
     <img src="${fullRecipeObj.image}" alt="${fullRecipeObj}"/>
     <h2>${fullRecipeObj.title}</h2>
     <ul>${allIngredientsList.join("")}</ul>
@@ -192,13 +185,10 @@ btnFindRecipe.addEventListener("click", async () => {
     displayRecipesFromSearch(recipes);
 
     // modal code
-    const btnDisplayRecipe =
-        document.getElementsByClassName("btnDisplayRecipe");
+    const btnDisplayRecipe = document.getElementsByClassName("btnDisplayRecipe");
     for (let element of btnDisplayRecipe) {
       console.log("THIS THING RIGHT HERE", element);
-      element.addEventListener("click", ({ target }) =>
-          displayFullRecipe(target.value)
-      );
+      element.addEventListener("click", ({ target }) => displayFullRecipe(target.value));
     }
   } else {
     console.log("empty arr");

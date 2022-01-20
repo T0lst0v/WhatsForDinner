@@ -1,22 +1,8 @@
-<<<<<<< HEAD
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-
 #divDineOutMain {
-  height: 100%;
+  height: 800px;
   width: 100%;
   display: none;
   flex-direction: column;
-=======
-#divDineOutMain {
-    height: 800px;
-    width: 100%;
-    display: none;
-    flex-direction: column;
->>>>>>> c2b485d93920d7f65cc4349fb53b589fb16b527c
 }
 
 #divMap {
@@ -27,13 +13,8 @@ body {
 }
 
 #divMapContainer {
-<<<<<<< HEAD
-  height: 100%;
+  height: 400px;
   width: 100%;
-=======
-    height: 400px;
-    width: 100%;
->>>>>>> c2b485d93920d7f65cc4349fb53b589fb16b527c
 }
 
 #divRestaurantFilters {
@@ -79,22 +60,19 @@ body {
 }
 
 .photo {
-<<<<<<< HEAD
   max-width: 200px;
   max-height: 150px;
 }
-=======
-    max-width: 200px;
-    max-height: 150px;
-}
 
-* {box-sizing:border-box}
+* {
+  box-sizing: border-box;
+}
 
 /* Slideshow container */
 #divPhotos {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
 }
 
 /* Hide the images by default
@@ -104,30 +82,31 @@ body {
 /*}*/
 
 .foodImage {
-    max-height: 500px;
-    width: 100%;
+  max-height: 500px;
+  width: 100%;
 }
 
 /* Next & previous buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
 }
 
 /* Position the "next button" to the right */
 .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
+  right: 0;
+  border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
@@ -137,24 +116,35 @@ body {
 
 /* Fading animation */
 .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
 
 @-webkit-keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-    .prev, .next,.text {font-size: 11px}
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
 }
->>>>>>> c2b485d93920d7f65cc4349fb53b589fb16b527c
