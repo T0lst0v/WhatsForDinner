@@ -83,6 +83,11 @@
     box-sizing: border-box;
 }
 
+.mySlides {
+    display: block;
+    margin: auto;
+}
+
 .foodImage {
     max-height: 300px;
     width: 100%;

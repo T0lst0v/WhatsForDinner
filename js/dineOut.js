@@ -179,7 +179,7 @@ function displayRestaurantInfo(result, status) {
     if (result.website) {
         divTitle.innerHTML = `<p><a href="${result.website}" target="_blank">${result.name} - ${result.rating} \u272e</a></p>`;
     } else {
-        divTitle.innerHTML = `<a>${result.name} - ${result.rating} \u272e</a>`;
+        divTitle.innerHTML = `<p>${result.name} - ${result.rating} \u272e</p>`;
     }
 
     // update address and review
