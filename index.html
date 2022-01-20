@@ -19,132 +19,132 @@
 </head>
 
 <body>
-<div id="mainDiv">
-    <div id="divTitle">
-        <strong>What's for Dinner?</strong>
-    </div>
-
-    <div id="contentWrapper">
-
-        <div id="divButtons">
-            <div class="button" id="btnCookAtHome">Cook at Home</div>
-            <div class="button" id="btnDineOut">Dine Out</div>
-            <div class="button" id="btnOrderOnline">Order Online</div>
+    <div id="mainDiv">
+        <div id="divTitle">
+            <a href="index.html.com">What's for Dinner?</a>
         </div>
 
-        <div id="divIngredients">
+        <div id="contentWrapper">
 
-            <div id="inputContainer">
-                <input type="text" id="txtAddIngredient" placeholder="Enter ingredient that you have" />
-                <button id="btnAddIngredient">Add</button>
-                <div id="autoCompleteBox">
-                    <!-- JS insert -->
-                </div>
+            <div id="divButtons">
+                <div class="button" id="btnCookAtHome">Cook at Home</div>
+                <!-- <div class="button" id="btnOrderOnline">Order Online</div> -->
+                <div class="button" id="btnDineOut">Dine Out</div>
             </div>
 
-            <ul id="ulIngredients">
-                <!-- JS insert -->
-            </ul>
+            <div id="divIngredients">
 
-
-            <div id="divFilters">
-                <label for="maxUsed">max used ingredients</label>
-                <input type="radio" id="maxUsed" class="chkFilter" name="filters" checked>
-                <span class="spaceBetween"> </span>
-                <label for="minMissed">min missing ingredients</label>
-                <input type="radio" id="minMissed" class="chkFilter" name="filters">
-            </div>
-
-            <div id="divSlider">
-                <input id="rngFilter" class="styled-slider slider-progress" type="range" step="5" min="5" max="50"
-                       value="10">
-                <label for="rngFilter" id="lblRangeFilter">10</label>
-            </div>
-
-            <div id="divFindRecipesButton">
-                <button id="btnFindRecipes">Find Recipes</button>
-            </div>
-
-            <!-- modal divs -->
-            <div id="fullRecipeContainer">
-                <div id="modalInnerWrapper">
-
-                    <div id="closeModal">
-                        <div style="transform: rotate(45deg);">+</div>
-                    </div>
-                    <div id="modalContent">
+                <div id="inputContainer">
+                    <input type="text" id="txtAddIngredient" placeholder="Enter ingredient that you have" />
+                    <button id="btnAddIngredient">Add</button>
+                    <div id="autoCompleteBox">
                         <!-- JS insert -->
                     </div>
                 </div>
-            </div>
 
-        </div>
-
-        <!-- DINE OUT -->
-        <div id="divDineOutMain">
-            <div id="divRestaurantFilters">
-                <label>Cuisine</label>
-                <select id="selCuisine">
-                    <option>Any</option>
-                    <option>American</option>
-                    <option>Italian</option>
-                    <option>Chinese</option>
-                    <option>Mexican</option>
-                    <option>Indian</option>
-                    <option>Pizza</option>
-                    <option>Fast Food</option>
-                </select>
-
-                <ul id="ulRestaurants">
+                <ul id="ulIngredients">
                     <!-- JS insert -->
                 </ul>
 
-                <div id="divRestaurantInfo">
-                    <div id="divRestaurantTitle">
 
-                        <!-- JS insert -->
-                    </div>
-                    <div id="divPhotos">
+                <div id="divFilters">
+                    <label for="maxUsed">max used ingredients</label>
+                    <input type="radio" id="maxUsed" class="chkFilter" name="filters" checked>
+                    <span class="spaceBetween"> </span>
+                    <label for="minMissed">min missing ingredients</label>
+                    <input type="radio" id="minMissed" class="chkFilter" name="filters">
+                </div>
 
+                <div id="divSlider">
+                    <input id="rngFilter" class="styled-slider slider-progress" type="range" step="3" min="3" max="60"
+                        value="9">
+                    <label for="rngFilter" id="lblRangeFilter">9</label>
+                </div>
+
+                <div id="divFindRecipesButton">
+                    <button id="btnFindRecipes">Find Recipes</button>
+                </div>
+
+                <!-- modal div -->
+                <div id="fullRecipeContainer">
+                    <div id="modalInnerWrapper">
+
+                        <div id="closeModal">
+                            <div style="transform: rotate(45deg);">+</div>
+                        </div>
+                        <div id="modalContent">
+                            <!-- JS insert -->
+                        </div>
                     </div>
-                    <div id="divReview">
+                </div>
+
+            </div>
+
+            <!-- DINE OUT -->
+            <div id="divDineOutMain">
+                <div id="divRestaurantFilters">
+                    <label>Cuisine</label>
+                    <select id="selCuisine">
+                        <option>Any</option>
+                        <option>American</option>
+                        <option>Italian</option>
+                        <option>Chinese</option>
+                        <option>Mexican</option>
+                        <option>Indian</option>
+                        <option>Pizza</option>
+                        <option>Fast Food</option>
+                    </select>
+
+                    <ul id="ulRestaurants">
                         <!-- JS insert -->
+                    </ul>
+
+                    <div id="divRestaurantInfo">
+                        <div id="divRestaurantTitle">
+
+                            <!-- JS insert -->
+                        </div>
+                        <div id="divPhotos">
+
+                        </div>
+                        <div id="divReview">
+                            <!-- JS insert -->
+                        </div>
+                        <div id="divReviewButtons">
+                            <!-- JS insert -->
+                        </div>
+                        <br>
+                        <div id="divAddress">
+                            <!-- JS insert -->
+                        </div>
                     </div>
-                    <div id="divReviewButtons">
-                        <!-- JS insert -->
-                    </div>
-                    <br>
-                    <div id="divAddress">
+                </div>
+
+                <div id="divMapContainer">
+                    <div id="divMap">
                         <!-- JS insert -->
                     </div>
                 </div>
             </div>
 
-            <div id="divMapContainer">
-                <div id="divMap">
-                    <!-- JS insert -->
-                </div>
+            <div id="divRecipes">
+                <!-- JS insert -->
             </div>
+
         </div>
 
-        <div id="divRecipes">
-            <!-- JS insert -->
-        </div>
+        <footer id="divLogo">
+            <img id="imgLogo" src="images/startup_food.png" alt="image of a pile of vegetables" />
+            <a href="#"> <img src="images/github-3.png" alt="git hub log" id="gitHubLogo"></a>
+        </footer>
 
     </div>
 
-    <footer id="divLogo">
-        <img id="imgLogo" src="images/startup_food.png" alt="image of a pile of vegetables" />
-        <a href="#"> <img src="images/github-3.png" alt="git hub log" id="gitHubLogo"></a>
-    </footer>
-
-</div>
-
-<script src="js/app.js"></script>
-<script src="js/autocomplite.js"></script>
-<script src="js/range-input.js"></script>
-<script src="js/dineOut.js"></script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALc4BcFeJUxgSlpTAYAkbEohZ2CWFBdUs&libraries=places&callback=initMap"></script>
+    <script src="js/app.js"></script>
+    <!-- <script src="js/autocomplite.js"></script> -->
+    <script src="js/range-input.js"></script>
+    <script src="js/dineOut.js"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALc4BcFeJUxgSlpTAYAkbEohZ2CWFBdUs&libraries=places&callback=initMap"></script>
 </body>
 
 </html>
