@@ -5,11 +5,12 @@ const autoIngredient = async (searchIngredient, inp) => {
   const ingredientsArr = await res.json();
 
   let listItems = ingredientsArr.map((e) => {
-    let item = `<p>${e.name}</p>`;
+    let item = `<p class='autoItem'>${e.name}</p>`;
     return item;
   });
 
   //  select from drop down on click
+  //TODO hide if Input or drop is not in focus
   autoCompleteBox.innerHTML = listItems.join("");
   autoCompleteBox.addEventListener("click", (e) => {
     txtIngredient.value = e.target.innerHTML;
@@ -18,16 +19,17 @@ const autoIngredient = async (searchIngredient, inp) => {
   // TODO: select with arrow keys + enter
   txtIngredient.addEventListener("keydown", (e) => {
     x = document.getElementById("autoCompleteBox");
-    console.log(x);
-    console.log(e.target);
   });
 };
 
-txtIngredient.addEventListener("input", () => {
+txtIngredient.addEventListener("input", (e) => {
   autoCompleteBox.style.display = "block";
   autoIngredient(txtIngredient.value);
   if (txtIngredient.value == "") {
     autoCompleteBox.style.display = "none";
     autoCompleteBox.innerHTML = "";
   }
+  // if (e.target !== document.activeElement) console.log("NONE");
+  // console.log(document.activeElement);
+  // console.log(e.target);
 });
