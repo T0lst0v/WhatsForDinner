@@ -15,7 +15,7 @@
 #divMapContainer {
     height: 400px;
     width: 100%;
-    padding-bottom: 35px;
+    padding-bottom: 50px;
 }
 
 #divRestaurantFilters {
@@ -52,8 +52,22 @@
     display: flex;
     flex-direction: row;
     overflow: auto;
-    max-width: 440px;
+    max-width: 96%;
+    min-width: 96%;
+    min-height: 100%;
     list-style-type: none;
+    position: relative;
+    margin: auto;
+}
+
+#divReview {
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+#selCuisine {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .review {
@@ -69,19 +83,6 @@
     box-sizing: border-box;
 }
 
-/* Slideshow container */
-#divPhotos {
-    max-width: 95%;
-    position: relative;
-    margin: auto;
-}
-
-/* Hide the images by default
-*/
-/*.mySlides {*/
-/*    display: none;*/
-/*}*/
-
 .foodImage {
     max-height: 500px;
     width: 100%;
@@ -96,9 +97,9 @@
     width: auto;
     margin-top: -22px;
     padding: 16px;
-    color: white;
+    color: red;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 30px;
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
@@ -113,7 +114,7 @@
 /* On hover, add a black background color with a little bit see-through */
 .prev:hover, .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
-    padding-bottom: 40px;
+    padding-bottom: 60px;
 }
 
 /* Fading animation */

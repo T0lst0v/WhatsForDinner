@@ -1,4 +1,7 @@
-let userLocation;
+// noinspection JSUnresolvedVariable,JSUnresolvedFunction
+// noinspection JSUnresolvedVariable
+
+let wait = true; // wait for dine out button click to load Google Maps
 let map;
 let mapBounds;
 let service;
@@ -7,20 +10,21 @@ let searchResults = [];
 let reviews = [];
 let currentReview = 0;
 let currentCuisine = "restaurant";
+let imageSlideIndex = 1;
+let imageSlideToggle = false; // toggles between image row and singe image
 let ulRestaurants = document.getElementById("ulRestaurants");
-let wait = true;
-let slideIndex = 1;
-let imageToggle = false;
-
 let divReview = document.getElementById("divReview");
-
 let selCuisine = document.getElementById("selCuisine");
+
 selCuisine.onchange = () => changeCuisine();
 
 // loads the initial map
 function initMap() {
     // don't init map on main menu load, wait for dine out click
-    //if (wait) return;
+    if (wait) return;
+
+    // users location in lat and long
+    let userLocation;
 
     // Initialize variables
     mapBounds = new google.maps.LatLngBounds();
@@ -46,18 +50,18 @@ function initMap() {
             },
             () => {
                 // geolocation supported but the user denied permission
-                handleLocationError(true, infoWindow);
+                handleLocationError(true, userLocation, infoWindow);
             }
         );
     } else {
         // Browser doesn't support geolocation
-        handleLocationError(false, infoWindow);
+        handleLocationError(false, userLocation, infoWindow);
     }
 }
 
 // handle a geolocation error
 // TODO ask user for a zip code
-function handleLocationError(browserHasGeolocation, infoWindow) {
+function handleLocationError(browserHasGeolocation, userLocation, infoWindow) {
     // Set default location to Baltimore, Maryland
     userLocation = {lat: 39.29, lng: -76.609};
     map = new google.maps.Map(document.getElementById("divMap"), {
@@ -67,7 +71,9 @@ function handleLocationError(browserHasGeolocation, infoWindow) {
 
     // display error to user
     infoWindow.setPosition(userLocation);
-    infoWindow.setContent(browserHasGeolocation ? "Geolocation permissions denied. Using default location." : "Error: Your browser doesn't support geolocation.");
+    infoWindow.setContent(browserHasGeolocation ?
+        "Geolocation permissions denied. Using default location."
+        : "Error: Your browser doesn't support geolocation.");
     infoWindow.open(map);
 
     // search Baltimore
@@ -91,8 +97,6 @@ function getNearbyPlaces(position) {
 }
 
 // Handle the results (up to 20) of the Nearby Search
-// can do pagination for up to 60 but is slower, would need to be async
-// TODO: use the pagination feature to get more results back
 function nearbyPlacesSearchResults(results, status) {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
         searchResults.push(...results);
@@ -104,17 +108,15 @@ function nearbyPlacesSearchResults(results, status) {
 function displayRestaurants() {
     ulRestaurants.innerHTML = "";
     searchResults
-        .filter((result) => result.rating)
-        .sort((a, b) => (a.rating > b.rating ? -1 : 1))
+        .filter((result) => result.rating) // filter out dodgy places with 0 reviews
+        .sort((a, b) => (a.rating > b.rating ? -1 : 1)) // sort by highest rating
         .forEach((result) => {
             ulRestaurants.insertAdjacentHTML(
-                "beforeEnd",
-                `
+                "beforeend",`
             <li>
                 <a href='javascript:void();' onclick="updateRestaurantDisplay('${result.name}')">
                     ${result.name} (${result.rating} \u272e)</a>
-            </li>`
-            );
+            </li>`);
         });
     updateRestaurantDisplay(searchResults[0].name);
 }
@@ -140,16 +142,18 @@ function moveMap(restaurant) {
         animation: google.maps.Animation.DROP,
     });
 
-    // place marker and pan map
-    map.panTo(restaurant.geometry.location);
+    // place marker
     marker.position = restaurant.geometry.location;
+
+    // pan map
+    map.panTo(restaurant.geometry.location);
 }
 
 // update div with new restaurant details
 function updateInfo(restaurant) {
     let request = {
         placeId: restaurant.place_id,
-        fields: ["name", "formatted_address", "geometry", "rating", "website", "photos", "reviews"],
+        fields: ["name", "formatted_address", "geometry", "rating", "website", "photos", "reviews"]
     };
     service.getDetails(request, (result, status) => displayRestaurantInfo(result, status));
 }
@@ -185,11 +189,10 @@ function displayRestaurantInfo(result, status) {
     // next and previous buttons
     divReviewButtons.innerHTML = `<a onclick="previousReview()">Previous Review</a> - <a onclick="nextReview()">Next Review</a>`;
     let p = "";
-    let numberofPhotos = 0;
-    if (result.photos) numberofPhotos = result.photos.length;
-    for (let c = 0; c < numberofPhotos; c++) {
+    let nmbOfPhotos = 0;
+    if (result.photos) nmbOfPhotos = result.photos.length;
+    for (let c = 0; c < nmbOfPhotos; c++) {
         let photo = result.photos[c];
-
         p += `
         <div class="mySlides fade">
             <img src="${photo.getUrl()}" onclick="slideToggle()" class="foodImage" alt="picture from restaurant"/>                
@@ -208,25 +211,21 @@ function nextReview() {
     if (currentReview < reviews.length) {
         currentReview++;
     }
-
     if (currentReview >= reviews.length) {
         currentReview = 0;
     }
-
     divReview.innerHTML = `<p>${reviews[currentReview].text}</p>`;
 }
 
 // scrolls to the previous review
-// wraps around when it reachs end of reviews
+// wraps around when it reaches end of reviews
 function previousReview() {
     if (currentReview >= 1) {
         currentReview--;
     }
-
     if (currentReview === 0) {
         currentReview = reviews.length - 1;
     }
-
     divReview.innerHTML = `<p>${reviews[currentReview].text}</p>`;
 }
 
@@ -239,41 +238,42 @@ function changeCuisine() {
     getNearbyPlaces(userLocation);
 }
 
+// change the image slide showing
 function changeSlide(n) {
-    showSlides((slideIndex += n));
+    showSlides((imageSlideIndex += n));
 }
 
-function currentSlide(n) {
-    showSlides((slideIndex = n));
-}
-
+// toggle between image bar and one big image
 function slideToggle() {
-    imageToggle = !imageToggle;
+    imageSlideToggle = !imageSlideToggle;
 
-    if (imageToggle) {
-        showSlides(slideIndex);
+    if (imageSlideToggle) {
+        showSlides(imageSlideIndex);
     } else {
         let slides = document.getElementsByClassName("mySlides");
+
+        // display all images
         for (let i = 0; i < slides.length; i++)
             slides[i].style.display = "block";
     }
 }
 
+// shows a big image slide from the image bar
 function showSlides(n) {
     let slides = document.getElementsByClassName("mySlides");
 
     // wrap high end
     if (n > slides.length)
-        slideIndex = 1;
+        imageSlideIndex = 1;
 
     // wrap low end
     if (n < 1)
-        slideIndex = slides.length;
+        imageSlideIndex = slides.length;
 
     // hide all images
     for (let i = 0; i < slides.length; i++)
         slides[i].style.display = "none";
 
     // display one main image
-    slides[slideIndex - 1].style.display = "block";
+    slides[imageSlideIndex - 1].style.display = "block";
 }
