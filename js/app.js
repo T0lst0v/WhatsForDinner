@@ -21,6 +21,26 @@ const lblRangeFilter = document.getElementById("lblRangeFilter");
 const ingredientsArr = [];
 const lettersOnly = /^[a-zA-Z]/g;
 
+// modal variables
+const modalContent = document.querySelector("#modalContent");
+const fullRecipeContainer = document.querySelector("#fullRecipeContainer");
+const closeModal = document.querySelector("#closeModal");
+
+// event listener to close recipe card
+closeModal.addEventListener('click', function() {
+  fullRecipeContainer.style.display = "none"
+})
+
+// When the modal is shown, we want a fixed body
+document.body.style.position = 'fixed';
+document.body.style.top = `-${window.scrollY}px`;
+
+// When the modal is hidden, we want to remain at the top of the scroll position
+const scrollY = document.body.style.top;
+document.body.style.position = '';
+document.body.style.top = '';
+window.scrollTo(0, parseInt(scrollY || '0') * -1);
+
 /*
  example GET for find by ingredients
  https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2
@@ -47,6 +67,7 @@ async function getRecipeFromID(recipeID) {
   return await response.json();
 }
 
+// TODO add event listener for modal to prevent scrolling here
 // Displaying Full recipe in separate div (need to make it as a Modal)
 async function displayFullRecipe(id) {
   let fullRecipeObj = await getRecipeFromID(id);
@@ -63,6 +84,7 @@ async function displayFullRecipe(id) {
     <p class='summary'>${fullRecipeObj.summary}</p>
   `;
   console.log(fullRecipeObj);
+  fullRecipeContainer.style.display = "flex"; // modal code
 }
 
 // Display Title and Picture of ID Recipe
@@ -149,7 +171,7 @@ txtIngredient.addEventListener("keyup", function (event) {
 
 //Search recipes with given ingredients
 btnFindRecipe.addEventListener("click", async () => {
-  if (ingredientsArr === "") {
+  if (ingredientsArr.length === 0) {
     console.log("empty");
     return;
   }
@@ -160,6 +182,16 @@ btnFindRecipe.addEventListener("click", async () => {
     console.log("recipes=" + recipes);
     divRecipes.style.display = "block";
     displayRecipesFromSearch(recipes);
+
+    // modal code
+    const btnDisplayRecipe =
+        document.getElementsByClassName("btnDisplayRecipe");
+    for (let element of btnDisplayRecipe) {
+      console.log("THIS THING RIGHT HERE", element);
+      element.addEventListener("click", ({ target }) =>
+          displayFullRecipe(target.value)
+      );
+    }
   } else {
     console.log("empty arr");
   }
