@@ -5,10 +5,13 @@
   --accent2-color: #7ccc7e; /* 78d47a */
   --nonactive-color: rgb(184, 184, 184);
   --borders-color: rgb(199, 199, 199);
+  --borders-color-light: rgb(233, 233, 233);
   --borders-color-dark: rgb(126, 126, 126);
+  --font-color-h2: rgb(138, 2, 2);
+
   --button-hover-background-color: #d5d9d9;
 
-  --shadow-box: rgb(130, 130, 130);
+  --shadow-box: rgb(0, 0, 0);
 
   --ingredient-container-width: 70%;
 
@@ -37,12 +40,9 @@ body {
   /* overflow-y: scroll; */
 }
 
-.button {
-  font-family: var(--font-family-h);
-  padding: 15px 40px;
-  border-radius: 5px;
-  font-size: x-large;
-  cursor: pointer;
+a:link {
+  text-decoration: none;
+  color: inherit;
 }
 
 #mainDiv {
@@ -76,47 +76,54 @@ body {
 }
 
 /* navigation menu */
+
+.button {
+  display: table-cell;
+  vertical-align: middle;
+  font-family: var(--font-family-h);
+  width: 400px;
+  text-align: center;
+  vertical-align: middle;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+
+  background-color: var(--background-color);
+  /* */
+}
 #divButtons {
   border-radius: 10px;
-  box-shadow: 0 10px 20px -15px rgb(0, 0, 0);
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-}
-#divButtons .button {
-  background-color: var(--txt-bg-color);
-  border: solid 2px var(--txt-bg-color);
-}
 
-#divButtons .button:hover {
-  border-top: solid 2px var(--accent1-color);
-  border-bottom: solid 2px var(--accent1-color);
-  color: var(--accent1-color);
+  /* display: flex;
+  flex-direction: row; */
+  margin-bottom: 20px;
 }
 
 #btnDineOut {
   border-radius: 0;
+  border-radius: 0 11px 11px 0;
+  border-top: solid 1px var(--borders-color);
+  border-bottom: solid 1px var(--borders-color);
+  border-right: solid 1px var(--borders-color);
 }
 
-#btnOrderOnline {
-  border-radius: 0 11px 11px 0;
-  padding-right: 100px;
+#btnDineOut:hover,
+#btnCookAtHome:hover {
+  background-color: var(--txt-bg-color);
+  color: var(--accent1-color);
+  box-shadow: 0px 10px 20px -15px var(--shadow-box);
+  border: solid 2px var(--txt-bg-color);
 }
 
 #btnCookAtHome {
   border-radius: 11px 0 0 11px;
-  padding-left: 100px;
+  border: solid 1px var(--borders-color);
 }
 
 /* search ingredient */
 #divIngredients {
   display: none;
   margin-top: 40px;
-  /* display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  justify-items: center; */
 }
 #inputContainer {
   position: relative;
@@ -153,7 +160,7 @@ body {
 #autoCompleteBox {
   display: none;
   position: absolute;
-  width: 80%;
+  width: 100%;
   top: 42px;
   max-height: 160px;
   background-color: var(--txt-bg-color);
@@ -167,6 +174,8 @@ body {
 #autoCompleteBox p {
   padding: 3px 6px;
   margin: 0;
+  cursor: pointer;
+  /* border-top: solid 1px var(--borders-color); */
 }
 #autoCompleteBox p:hover {
   background-color: var(--accent2-color);
@@ -188,23 +197,33 @@ body {
   padding-left: 25px;
   padding-bottom: 5px;
   border-radius: 10px;
-  font-size: medium;
-  font-weight: 550;
+  /* font-size: medium; */
+  font-weight: 400;
+  line-height: 100%;
   margin-bottom: 10px;
-  box-shadow: 0 5px 10px 0 var(--shadow-box);
+  border: 1px solid var(--borders-color-light);
+  box-shadow: 0px 10px 7px -12px var(--shadow-box);
 }
-
+.liIngredient:hover {
+  border: 1px solid var(--borders-color);
+}
 .ingredientListItem {
   margin-bottom: 8px;
   box-shadow: var(--shadow-box);
 }
 
-.removeImage {
+.removeItem {
   float: right;
   max-width: 100%;
   height: auto;
-  width: 20px;
-  padding-right: 8px;
+  width: 30px;
+  font-size: 24px;
+  text-align: center;
+  margin-right: 10px;
+}
+.removeItem:hover {
+  color: var(--accent1-color);
+  cursor: pointer;
 }
 
 /* Sorting */
@@ -228,6 +247,7 @@ body {
   border: 1px solid var(--borders-color);
   width: 24px;
   height: 24px;
+  font-size: 12px;
   line-height: 24px;
   text-align: center;
 }
@@ -268,7 +288,7 @@ body {
 
 #btnFindRecipes {
   border-radius: 10px;
-  border: 1px solid var(--borders-color);
+  border: 1px solid var(--txt-bg-color);
   font-size: large;
   height: 40px;
   /* padding: 5px 35px 3px 25px; */
@@ -281,17 +301,69 @@ body {
   background-color: var(--accent1-color);
 }
 
-/* Content - Recipes */
-#divRecipes {
-  display: none;
-}
-
+/*  TEST -what it is for ?*/
 #removeButton {
   background-color: transparent;
   border: none;
   font-size: large;
 }
 
+/* Content - Recipes */
+#divRecipes {
+  margin-top: 40px;
+  display: none;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.listOfTitles {
+  position: relative;
+  list-style-type: none;
+  background-color: var(--txt-bg-color);
+  width: 240px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--borders-color-light);
+  box-shadow: 0px 30px 20px -34px var(--shadow-box);
+}
+.listOfTitles img {
+  width: 200px;
+  height: 150px;
+  border: 1px solid var(--borders-color);
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.itemTitle {
+  margin: 16px 0 6px;
+  font-size: 16px;
+  color: var(--font-color-h2);
+}
+
+.itemLikes {
+  position: absolute;
+  bottom: 10px;
+  text-align: right;
+  margin-bottom: 6px;
+  font-style: italic;
+  margin-bottom: 30px;
+}
+
+.itemMissing,
+.itemUsed {
+  margin: 4px 0;
+}
+.itemMissing {
+  margin-bottom: 60px;
+}
+
+#btnDisplayRecipe {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+}
 /* Footer */
 #divLogo {
   display: flex;
@@ -325,6 +397,7 @@ a {
   justify-content: center;
   align-items: center;
   overflow-y: hidden;
+  z-index: 10;
 }
 
 #modalContent {
@@ -371,11 +444,11 @@ a {
     width: 90%;
   }
 
-  #btnOrderOnline {
+  /* #btnOrderOnline {
     border-radius: 10px;
     padding-left: 0;
     padding-right: 0;
-  }
+  } */
 
   #btnDineOut {
     border-radius: 10px;

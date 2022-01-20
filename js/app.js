@@ -94,12 +94,13 @@ function displayRecipesFromSearch(recipes) {
   divRecipes.innerHTML = "";
   recipes.forEach((recipe) => {
     let recipeContainer = `
-        <ul style="listOfTitles">&times;
-            <li>${recipe.title}</li>
+        <ul class="listOfTitles">
             <li><img src=${recipe.image} alt='image of '${recipe.title}/></li>
-            <li>${recipe.likes} likes</li>
-            <li>missing ${recipe.missedIngredientCount} ingredients</li>
-            <li>uses ${recipe.usedIngredientCount} of our ingredients</li>
+            <li class="itemTitle">${recipe.title}</li>
+            
+            <li class="itemUsed">${recipe.usedIngredientCount} used ingredients</li>
+            <li class="itemMissing">${recipe.missedIngredientCount} missing ingredients</li>
+            <li class="itemLikes">${recipe.likes} likes</li>
             <button id="btnDisplayRecipe" onclick = "displayFullRecipe('${recipe.id}')">Show More</button>
         </ul>
         `;
@@ -119,8 +120,7 @@ function displayIngredient(ingredient) {
   let newIngredientLi = `
     <li class="liIngredient" id="${removeSpaces(ingredient)}">
         ${ingredient}
-        <img src="images/x_mark.png" class="removeImage" onclick = "removeIngredient('${ingredient}')" 
-            alt="remove ingredient clickable image button"/>
+        <span class="removeItem" onclick = "removeIngredient('${ingredient}')" >&times;</span>
     </li>`;
 
   ingredientsArr.push(removeSpaces(ingredient));
@@ -181,7 +181,7 @@ btnFindRecipe.addEventListener("click", async () => {
   let recipes = await getRecipeIDs(stringToSearch(), number);
   if (recipes !== "") {
     console.log("recipes=" + recipes);
-    divRecipes.style.display = "block";
+    divRecipes.style.display = "flex";
     displayRecipesFromSearch(recipes);
 
     // modal code
