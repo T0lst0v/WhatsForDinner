@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/dineOutStyles.css">
+    <link rel="stylesheet" href="css/autoComplite.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -38,6 +39,7 @@
                 <div id="inputContainer">
                     <input type="text" id="txtAddIngredient" placeholder="Enter ingredient that you have" />
                     <button id="btnAddIngredient">Add</button>
+                    <div id="autoCompleteBox"></div>
                 </div>
 
                 <ul id="ulIngredients">
@@ -93,17 +95,21 @@
                             </ul>
                         </div>
                         <div id="divReview">
-                            <!-- JS insert --></div>
+                            <!-- JS insert -->
+                        </div>
                         <div id="divReviewButtons">
-                            <!-- JS insert --></div>
+                            <!-- JS insert -->
+                        </div>
                         <br>
                         <div id="divAddress">
-                            <!-- JS insert --></div>
+                            <!-- JS insert -->
+                        </div>
                     </div>
                 </div>
                 <div id="divMapContainer">
                     <div id="divMap">
-                        <!-- JS insert --></div>
+                        <!-- JS insert -->
+                    </div>
                 </div>
             </div>
 
@@ -127,9 +133,11 @@
     </div>
 
     <script src="js/app.js"></script>
+    <script src="js/autocomplite.js"></script>
     <script src="js/range-input.js"></script>
     <script src="js/dineOut.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALc4BcFeJUxgSlpTAYAkbEohZ2CWFBdUs&libraries=places&callback=initMap"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALc4BcFeJUxgSlpTAYAkbEohZ2CWFBdUs&libraries=places&callback=initMap"></script>
 </body>
 
 </html>

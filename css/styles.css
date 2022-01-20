@@ -48,6 +48,7 @@ body {
 #mainDiv {
   position: relative;
   display: flex;
+  margin: auto;
   flex-flow: column nowrap;
   align-items: center;
   max-width: 800px;
@@ -117,6 +118,7 @@ body {
   justify-items: center; */
 }
 #inputContainer {
+  position: relative;
   margin: auto;
   display: flex;
   width: var(--ingredient-container-width);
@@ -124,7 +126,7 @@ body {
 }
 #txtAddIngredient {
   font-size: 18px;
-  width: 100%;
+  width: 80%;
   border-radius: 10px 0 0 10px;
   border: 1px solid var(--borders-color);
   border-right: none;
@@ -134,7 +136,7 @@ body {
   border-radius: 0 10px 10px 0;
   border: var(--borders-color);
   font-size: 18px;
-  width: 120px;
+  width: 20%;
   /* padding: 5px 35px 3px 25px; */
   background: var(--accent2-color);
   color: var(--txt-bg-color);
