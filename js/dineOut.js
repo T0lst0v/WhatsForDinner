@@ -9,6 +9,7 @@ let currentReview = 0;
 let currentCuisine = 'restaurant';
 let ulRestaurants = document.getElementById("ulRestaurants");
 let wait = true;
+let divReview = document.getElementById("divReview");
 
 let selCuisine = document.getElementById("selCuisine");
 selCuisine.onchange = () => changeCuisine();
@@ -113,6 +114,7 @@ function displayRestaurants() {
 // updates the info display to whatever restaurant user clicked
 function updateRestaurantDisplay(name) {
     let restaurant = searchResults.filter(result => result.name === name)[0];
+
     moveMap(restaurant);
     updateInfo(restaurant);
 }
@@ -131,8 +133,8 @@ function moveMap(restaurant) {
     });
 
     // place marker and pan map
-    marker.position = restaurant.geometry.location;
     map.panTo(restaurant.geometry.location);
+    marker.position = restaurant.geometry.location;
 }
 
 // update div with new restaurant details
@@ -156,7 +158,6 @@ function displayRestaurantInfo(result, status) {
     // html elements
     let divTitle = document.getElementById("divRestaurantTitle");
     let divPhotos = document.getElementById("divPhotos");
-    let divReview = document.getElementById("divReview");
     let divAddress = document.getElementById("divAddress");
     let divReviewButtons = document.getElementById("divReviewButtons");
 
@@ -175,25 +176,29 @@ function displayRestaurantInfo(result, status) {
     divReview.innerHTML = `<p>${result.reviews[currentReview].text}</p>`;
 
     // next and previous buttons
-    divReviewButtons.innerHTML = `<a href="#" onclick="previousReview()">Previous Review</a> - <a href="#" onclick="nextReview()">Next Review</a>`
-
-    // photos
-    divPhotos.innerHTML = "";
+    divReviewButtons.innerHTML = `<a onclick="previousReview()">Previous Review</a> - <a onclick="nextReview()">Next Review</a>`
+    let p = "";
     result.photos.forEach(photo => {
-        divPhotos.innerHTML += `<li>
-            <img src="${photo.getUrl()}" class="photo" alt="photo of food"/>
-        </li>`;
-    });
+        p += `
+        <div class="mySlides fade">
+            <img src="${photo.getUrl()}" class="foodImage" alt="picture from restaurant"/>                
+        </div>`
+    })
+
+    divPhotos.innerHTML = p;
+    divPhotos.innerHTML += `
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>`
 }
 
 // scrolls to the next review
-// wraps around when it reachs end of reviews
+// wraps around when it reaches end of reviews
 function nextReview() {
-    if(currentReview < reviews.length){
+    if (currentReview < reviews.length) {
         currentReview++;
     }
 
-    if(currentReview >= reviews.length){
+    if (currentReview >= reviews.length) {
         currentReview = 0;
     }
 
@@ -203,16 +208,15 @@ function nextReview() {
 // scrolls to the previous review
 // wraps around when it reachs end of reviews
 function previousReview() {
-    if(currentReview >= 1){
+    if (currentReview >= 1) {
         currentReview--;
     }
 
-    if(currentReview === 0){
+    if (currentReview === 0) {
         currentReview = reviews.length - 1;
     }
 
     divReview.innerHTML = `<p>${reviews[currentReview].text}</p>`;
-
 }
 
 // searches nearby places when user changes the cuisine select box
@@ -222,4 +226,30 @@ function changeCuisine() {
     currentCuisine = text;
     searchResults = [];
     getNearbyPlaces(userLocation);
+}
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
 }

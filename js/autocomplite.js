@@ -15,7 +15,7 @@ const autoIngredient = async (searchIngredient, inp) => {
     txtIngredient.value = e.target.innerHTML;
   });
 
-  //TODO select with arrow keys + enter
+  // TODO select with arrow keys + enter
   txtIngredient.addEventListener("keydown", (e) => {
     x = document.getElementById("autoCompleteBox");
     console.log(x);
