@@ -201,8 +201,8 @@ function displayRestaurantInfo(result, status) {
 
     divPhotos.innerHTML = p;
     divPhotos.innerHTML += `
-    <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
-    <a class="next" onclick="changeSlide(1)">&#10095;</a>`;
+    <a class="prev" id="prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="next" id="next" onclick="changeSlide(1)">&#10095;</a>`;
 }
 
 // scrolls to the next review
@@ -251,6 +251,11 @@ function slideToggle() {
         showSlides(imageSlideIndex);
     } else {
         let slides = document.getElementsByClassName("mySlides");
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+
+        prev.style.display = 'none';
+        next.style.display = 'none';
 
         // display all images
         for (let i = 0; i < slides.length; i++)
@@ -261,6 +266,11 @@ function slideToggle() {
 // shows a big image slide from the image bar
 function showSlides(n) {
     let slides = document.getElementsByClassName("mySlides");
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+
+    prev.style.display = 'block';
+    next.style.display = 'block';
 
     // wrap high end
     if (n > slides.length)
