@@ -176,7 +176,7 @@ function displayRestaurantInfo(result, status) {
 
     // next and previous buttons
     divReviewButtons.innerHTML = `<a onclick="previousReview()">Previous Review</a> - <a onclick="nextReview()">Next Review</a>`
-
+    divPhotos.innerHTML = "";
     result.photos.forEach(photo => {
         divPhotos.innerHTML += `
         <div class="mySlides fade">
