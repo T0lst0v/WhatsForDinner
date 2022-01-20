@@ -111,7 +111,7 @@ function displayRestaurants() {
                 "beforeEnd",
                 `
             <li>
-                <a href="#" onclick="updateRestaurantDisplay('${result.name}')">
+                <a href='javascript:void();' onclick="updateRestaurantDisplay('${result.name}')">
                     ${result.name} (${result.rating} \u272e)</a>
             </li>`
             );
@@ -180,8 +180,6 @@ function displayRestaurantInfo(result, status) {
 
     // update address and review
     divAddress.innerHTML = `<a>${result.formatted_address}</a>`;
-
-
     divReview.innerHTML = `<p>${result.reviews[currentReview].text}</p>`;
 
     // next and previous buttons

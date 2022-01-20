@@ -213,7 +213,7 @@ btnDineOut.addEventListener("click", () => {
   let divDineOut = document.getElementById("divDineOutMain");
   divDineOut.style.display = "block";
   let divLogo = document.getElementById("divLogo");
-  divLogo.style.display = "none";
+  //divLogo.style.display = "none";
   wait = false; // changing wait on dineOut.js so map can now init
   searchResults = [];
   initMap();
