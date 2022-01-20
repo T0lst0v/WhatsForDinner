@@ -36,7 +36,7 @@ async function getRecipeIDs(ingredients, number) {
   console.log("ids url" + url);
   const response = await fetch(url);
   console.log("response= " + response);
-  return recipeIDs = await response.json();
+  return await response.json();
 }
 
 // Fetching Recipes of ID
@@ -44,7 +44,7 @@ async function getRecipeFromID(recipeID) {
   let url = `${urlRecipe}${recipeID}/information?apiKey=${apiKey}`;
   console.log(`Recipe from id link is: ${url}`);
   const response = await fetch(url);
-  return recipes = await response.json();
+  return await response.json();
 }
 
 // Displaying Full recipe in separate div (need to make it as a Modal)
