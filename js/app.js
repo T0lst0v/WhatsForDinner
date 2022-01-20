@@ -67,7 +67,6 @@ async function getRecipeFromID(recipeID) {
   return await response.json();
 }
 
-// TODO add event listener for modal to prevent scrolling here
 // Displaying Full recipe in separate div (need to make it as a Modal)
 async function displayFullRecipe(id) {
   let fullRecipeObj = await getRecipeFromID(id);
@@ -76,15 +75,35 @@ async function displayFullRecipe(id) {
   });
   console.log("allIngredientsList = " + allIngredientsList);
   modalContent.innerHTML = `
-    <img src="${fullRecipeObj.image}" alt="${fullRecipeObj}"/>
     <h2>${fullRecipeObj.title}</h2>
-    <ul>${allIngredientsList.join("")}</ul>
+    <ul id="modalIngridients">${allIngredientsList.join("")}</ul>
+    <img id="imgModal" src="${
+      fullRecipeObj.image
+    }" style="flex right" alt="${fullRecipeObj}"/>
     <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
     <p class='instructions'>${fullRecipeObj.instructions}</p>
-    <p class='summary'>${fullRecipeObj.summary}</p>
+    <button class="accordion">Chef's Summary</button>
+    <div class="panel">
+      <p class='summary'>${fullRecipeObj.summary}</p>
+    </div>
   `;
   console.log(fullRecipeObj);
   fullRecipeContainer.style.display = "flex"; // modal code
+}
+// accordion of summary within modal
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function () {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
 }
 
 // Display Title and Picture of ID Recipe
@@ -185,10 +204,13 @@ btnFindRecipe.addEventListener("click", async () => {
     displayRecipesFromSearch(recipes);
 
     // modal code
-    const btnDisplayRecipe = document.getElementsByClassName("btnDisplayRecipe");
+    const btnDisplayRecipe =
+      document.getElementsByClassName("btnDisplayRecipe");
     for (let element of btnDisplayRecipe) {
       console.log("THIS THING RIGHT HERE", element);
-      element.addEventListener("click", ({ target }) => displayFullRecipe(target.value));
+      element.addEventListener("click", ({ target }) =>
+        displayFullRecipe(target.value)
+      );
     }
   } else {
     console.log("empty arr");
