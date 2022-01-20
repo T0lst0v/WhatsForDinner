@@ -1,5 +1,5 @@
 #divDineOutMain {
-    height: 100%;
+    height: 800px;
     width: 100%;
     display: none;
     flex-direction: column;
@@ -13,7 +13,7 @@
 }
 
 #divMapContainer {
-    height: 100%;
+    height: 400px;
     width: 100%;
 }
 
@@ -78,6 +78,11 @@
 /*.mySlides {*/
 /*    display: none;*/
 /*}*/
+
+.foodImage {
+    max-height: 500px;
+    width: 100%;
+}
 
 /* Next & previous buttons */
 .prev, .next {

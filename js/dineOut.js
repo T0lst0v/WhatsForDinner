@@ -180,7 +180,7 @@ function displayRestaurantInfo(result, status) {
     result.photos.forEach(photo => {
         divPhotos.innerHTML += `
         <div class="mySlides fade">
-            <img src="${photo.getUrl()}" style="width: 100%" alt="picture from restaurant"/>                
+            <img src="${photo.getUrl()}" class="foodImage" alt="picture from restaurant"/>                
         </div>`
     })
 
@@ -234,7 +234,7 @@ function changeCuisine() {
     getNearbyPlaces(userLocation);
 }
 
-var slideIndex = 1;
+let slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
