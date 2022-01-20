@@ -114,6 +114,7 @@ function displayRestaurants() {
 // updates the info display to whatever restaurant user clicked
 function updateRestaurantDisplay(name) {
     let restaurant = searchResults.filter(result => result.name === name)[0];
+
     moveMap(restaurant);
     updateInfo(restaurant);
 }
@@ -132,8 +133,8 @@ function moveMap(restaurant) {
     });
 
     // place marker and pan map
-    marker.position = restaurant.geometry.location;
     map.panTo(restaurant.geometry.location);
+    marker.position = restaurant.geometry.location;
 }
 
 // update div with new restaurant details
@@ -176,29 +177,22 @@ function displayRestaurantInfo(result, status) {
 
     // next and previous buttons
     divReviewButtons.innerHTML = `<a onclick="previousReview()">Previous Review</a> - <a onclick="nextReview()">Next Review</a>`
-    divPhotos.innerHTML = "";
+    let p = "";
     result.photos.forEach(photo => {
-        divPhotos.innerHTML += `
+        p += `
         <div class="mySlides fade">
             <img src="${photo.getUrl()}" class="foodImage" alt="picture from restaurant"/>                
         </div>`
     })
 
+    divPhotos.innerHTML = p;
     divPhotos.innerHTML += `
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>`
-
-    // photos
-    // divPhotos.innerHTML = "";
-    // result.photos.forEach(photo => {
-    //     divPhotos.innerHTML += `<li>
-    //         <img src="${photo.getUrl()}" class="photo" alt="photo of food"/>
-    //     </li>`;
-    // });
 }
 
 // scrolls to the next review
-// wraps around when it reachs end of reviews
+// wraps around when it reaches end of reviews
 function nextReview() {
     if (currentReview < reviews.length) {
         currentReview++;
@@ -246,15 +240,14 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
     if (n > slides.length) {slideIndex = 1}
     if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
+    for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
+    for (let i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
     slides[slideIndex-1].style.display = "block";
