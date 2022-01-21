@@ -7,6 +7,7 @@ const maxUsed = document.getElementById("maxUsed");
 const minMissed = document.getElementById("minMissed");
 const divImg = document.getElementById("divImg");
 const gitHubLogo = document.getElementById("gitHubLogo");
+const Body = document.getElementById("Body");
 
 //buttons
 const btnAddIngredient = document.getElementById("btnAddIngredient");
@@ -73,6 +74,8 @@ async function getRecipeFromID(recipeID) {
 // Displaying Full recipe in separate div (need to make it as a Modal)
 async function displayFullRecipe(id) {
   let fullRecipeObj = await getRecipeFromID(id);
+  //TEST
+
   let allIngredientsList = fullRecipeObj.extendedIngredients.map((e) => {
     return `<li class="recipeIngredientsList">${e.original}</li>`;
   });
@@ -251,3 +254,19 @@ function getSortingString() {
   console.log(sortString);
   return sortString;
 }
+
+//TEST random
+function randomPic() {
+  let images = [];
+  let i = 0;
+  images[0] = "meal1.jpg";
+  images[1] = "meal2.jpg";
+  images[2] = "meal3.jpg";
+  images[3] = "meal4.jpg";
+  images[4] = "meal5.jpg";
+  images[5] = "meal6.jpg";
+  i = Math.floor(Math.random() * images.length);
+  return images[i];
+}
+
+divImg.innerHTML = ` <img id="imgLogo" src="images/${randomPic()}" alt='food image' />`;
