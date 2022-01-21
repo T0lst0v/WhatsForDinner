@@ -76,36 +76,30 @@ async function displayFullRecipe(id) {
   console.log("allIngredientsList = " + allIngredientsList);
   modalContent.innerHTML = `
     <h2>${fullRecipeObj.title}</h2>
-    <ul id="modalIngridients">${allIngredientsList.join("")}</ul>
     <img id="imgModal" src="${
       fullRecipeObj.image
-    }" style="flex right" alt="${fullRecipeObj}"/>
+    }" style="float: right" alt="${fullRecipeObj}"/>
+    <ul style="display: inline-block;">${allIngredientsList.join("")}</ul>
     <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
     <p class='instructions'>${fullRecipeObj.instructions}</p>
-    <button class="accordion">Chef's Summary</button>
-    <div class="panel">
+    <button id="accordion">Chef's Summary</button>
+    <div id="panel">
       <p class='summary'>${fullRecipeObj.summary}</p>
     </div>
   `;
   console.log(fullRecipeObj);
   fullRecipeContainer.style.display = "flex"; // modal code
-}
-// accordion of summary within modal
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
+  const accBtn = document.getElementById("accordion");
+  accBtn.addEventListener("click", () => {
+    if (document.getElementById("panel").style.display === "none") {
+      console.log("if");
+      document.getElementById("panel").style.display = "block";
     } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
+      console.log("else");
+      document.getElementById("panel").style.display = "none";
     }
   });
 }
-
 // Display Title and Picture of ID Recipe
 function displayRecipesFromSearch(recipes) {
   console.log("logging recipes search");

@@ -324,38 +324,29 @@ a {
   display: none;
   justify-content: center;
   align-items: center;
-  overflow-y: hidden;
+  box-sizing: border-box;
 }
 
 #modalContent {
-  width: 700px;
   background-color: white;
   text-align: left;
   padding: 20px;
   border-radius: 4px;
+  max-height: 70vh;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-y: auto;
 }
-#modalIngridients {
-  margin: 10px 0 0 0;
-  padding: 0 0 0 8px;
-  background-color: #fff;
-  float: left;
-  width: 200px;
-}
+
 #imgModal {
-  float: right;
-  border: 3px solid #fff;
-  margin: 8px 00;
+  margin: 0 0 0 8px;
   border-radius: 10%;
-}
-.readyInMinutes {
-  float: left;
-}
-#instructions {
-  display: inline-block;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
 #modalInnerWrapper {
   background-color: white;
+  width: 70%;
   border-radius: 25px;
   padding: 20px;
 }
@@ -372,7 +363,9 @@ a {
 #closeModal:hover {
   color: #666;
 }
-
+.instructions {
+  display: inline-block;
+}
 .accordion {
   background-color: #eee;
   color: #444;
@@ -388,7 +381,7 @@ a {
 .accordion:hover {
   background-color: #ccc;
 }
-.panel {
+#panel {
   padding: 0 18px;
   background-color: white;
   display: none;
