@@ -396,20 +396,31 @@ a {
   display: none;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   overflow-y: hidden;
   z-index: 10;
 }
 
 #modalContent {
-  width: 700px;
   background-color: white;
   text-align: left;
   padding: 20px;
   border-radius: 4px;
+  max-height: 70vh;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-y: auto;
+}
+
+#imgModal {
+  margin: 0 0 0 8px;
+  border-radius: 10%;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
 #modalInnerWrapper {
   background-color: white;
+  width: 70%;
   border-radius: 25px;
   padding: 20px;
 }
@@ -425,6 +436,31 @@ a {
 
 #closeModal:hover {
   color: #666;
+}
+.instructions {
+  display: inline-block;
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+#panel {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 
 @media (max-width: 650px) {
