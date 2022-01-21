@@ -5,6 +5,7 @@ const divRecipes = document.getElementById("divRecipes");
 const txtIngredient = document.getElementById("txtAddIngredient");
 const maxUsed = document.getElementById("maxUsed");
 const minMissed = document.getElementById("minMissed");
+const divImg = document.getElementById("divImg");
 //buttons
 const btnAddIngredient = document.getElementById("btnAddIngredient");
 const btnFindRecipe = document.getElementById("btnFindRecipes");
@@ -76,9 +77,7 @@ async function displayFullRecipe(id) {
   console.log("allIngredientsList = " + allIngredientsList);
   modalContent.innerHTML = `
     <h2>${fullRecipeObj.title}</h2>
-    <img id="imgModal" src="${
-      fullRecipeObj.image
-    }" style="float: right" alt="${fullRecipeObj}"/>
+    <img id="imgModal" src="${fullRecipeObj.image}" style="float: right" alt="${fullRecipeObj}"/>
     <ul style="display: inline-block;">${allIngredientsList.join("")}</ul>
     <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
     <p class='instructions'>${fullRecipeObj.instructions}</p>
@@ -189,6 +188,7 @@ btnFindRecipe.addEventListener("click", async () => {
     console.log("empty");
     return;
   }
+  divImg.style.display = "none";
   let number = sldFilterRange.value;
   console.log("sending number = " + number);
   let recipes = await getRecipeIDs(stringToSearch(), number);
@@ -198,13 +198,10 @@ btnFindRecipe.addEventListener("click", async () => {
     displayRecipesFromSearch(recipes);
 
     // modal code
-    const btnDisplayRecipe =
-      document.getElementsByClassName("btnDisplayRecipe");
+    const btnDisplayRecipe = document.getElementsByClassName("btnDisplayRecipe");
     for (let element of btnDisplayRecipe) {
       console.log("THIS THING RIGHT HERE", element);
-      element.addEventListener("click", ({ target }) =>
-        displayFullRecipe(target.value)
-      );
+      element.addEventListener("click", ({ target }) => displayFullRecipe(target.value));
     }
   } else {
     console.log("empty arr");
@@ -218,8 +215,9 @@ btnCookAtHome.addEventListener("click", () => {
   let divIngredients = document.getElementById("divIngredients");
   divIngredients.style.display = "block";
   let divDineOut = document.getElementById("divDineOutMain");
-  divDineOut.style.display = "none";  
-  divRecipes.style.display = 'flex';
+  divDineOut.style.display = "none";
+
+  divRecipes.style.display = "flex";
 });
 
 btnDineOut.addEventListener("click", () => {
@@ -227,8 +225,9 @@ btnDineOut.addEventListener("click", () => {
   divButton.style.display = "none";
   let divDineOut = document.getElementById("divDineOutMain");
   divDineOut.style.display = "block";
-  waitToCreateMap = false; // changing wait on dineOut.js so map can now init  
-  divRecipes.style.display = 'none';
+  waitToCreateMap = false; // changing wait on dineOut.js so map can now init
+  divImg.style.display = "none";
+  divRecipes.style.display = "none";
   searchResults = [];
   initMap();
 });

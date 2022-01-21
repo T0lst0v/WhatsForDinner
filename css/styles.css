@@ -72,7 +72,7 @@ a {
   /* display: flex;
   flex-direction: column;
   justify-content: center; */
-  padding-bottom: 60px;
+  padding-bottom: 100px;
 }
 
 /* navigation menu */
@@ -101,7 +101,7 @@ a {
 
 #btnDineOut {
   border-radius: 0;
-  border-radius: 0 11px 11px 0;
+  border-radius: 0 10px 10px 0;
   border-top: solid 1px var(--borders-color);
   border-bottom: solid 1px var(--borders-color);
   border-right: solid 1px var(--borders-color);
@@ -116,7 +116,7 @@ a {
 }
 
 #btnCookAtHome {
-  border-radius: 11px 0 0 11px;
+  border-radius: 10px 0 0 10px;
   border: solid 1px var(--borders-color);
 }
 
@@ -306,7 +306,7 @@ a {
   margin-top: 40px;
   display: none;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .listOfTitles {
@@ -475,7 +475,7 @@ a {
   transition: max-height 0.2s ease-out;
 }
 
-@media (max-width: 650px) {
+/* @media (max-width: 650px) {
   #divTitle {
     margin-top: 30px;
   }
@@ -492,11 +492,11 @@ a {
     width: 90%;
   }
 
-  /* #btnOrderOnline {
+  #btnOrderOnline {
     border-radius: 10px;
     padding-left: 0;
     padding-right: 0;
-  } */
+  }
 
   #btnDineOut {
     border-radius: 10px;
@@ -545,16 +545,45 @@ a {
   #divTitle {
     font-size: 50px;
   }
-}
+} */
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+  :root {
+    --ingredient-container-width: 90%;
+  }
   #divTitle {
     font-size: 40px;
   }
+  #divButtons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #btnCookAtHome,
+  #btnDineOut {
+    height: 40px;
+    border-radius: 10px;
+    border: solid 1px var(--borders-color);
+    width: 90%;
+    text-align: center;
+    padding-top: 8px;
+  }
+  #btnFindRecipes {
+    width: 70%;
+  }
+  .listOfTitles {
+    width: 92%;
+  }
+  .listOfTitles img {
+    display: block;
+
+    margin: auto;
+    width: 100%;
+  }
 }
 
-@media (max-width: 320px) {
+/* @media (max-width: 320px) {
   #divTitle {
     font-size: 30px;
   }
-}
+} */
