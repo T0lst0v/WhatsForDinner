@@ -77,14 +77,13 @@ async function displayFullRecipe(id) {
     return `<li class="recipeIngredientsList">${e.original}</li>`;
   });
   console.log("allIngredientsList = " + allIngredientsList);
-  let instructions = [fullRecipeObj].instructions;
-  if (instructions === null) instructions = "";
+
   modalContent.innerHTML = `
     <h2>${fullRecipeObj.title}</h2>
     <img id="imgModal" src="${fullRecipeObj.image}" style="float: right" alt="${fullRecipeObj}"/>
     <ul style="display: inline-block;">${allIngredientsList.join("")}</ul>
     <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
-    <p class='instructions'>${instructions}</p>
+    <p class='instructions'>${fullRecipeObj.instructions}</p>
     <button id="accordion">Chef's Summary</button>
     <div id="panel">
       <p class='summary'>${fullRecipeObj.summary}</p>
