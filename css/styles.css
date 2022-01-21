@@ -301,13 +301,6 @@ a:link {
   background-color: var(--accent1-color);
 }
 
-/*  TEST -what it is for ?*/
-#removeButton {
-  background-color: transparent;
-  border: none;
-  font-size: large;
-}
-
 /* Content - Recipes */
 #divRecipes {
   margin-top: 40px;
