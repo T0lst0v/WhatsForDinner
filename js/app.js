@@ -218,7 +218,8 @@ btnCookAtHome.addEventListener("click", () => {
   let divIngredients = document.getElementById("divIngredients");
   divIngredients.style.display = "block";
   let divDineOut = document.getElementById("divDineOutMain");
-  divDineOut.style.display = "none";
+  divDineOut.style.display = "none";  
+  divRecipes.style.display = 'flex';
 });
 
 btnDineOut.addEventListener("click", () => {
@@ -226,7 +227,8 @@ btnDineOut.addEventListener("click", () => {
   divButton.style.display = "none";
   let divDineOut = document.getElementById("divDineOutMain");
   divDineOut.style.display = "block";
-  waitToCreateMap = false; // changing wait on dineOut.js so map can now init
+  waitToCreateMap = false; // changing wait on dineOut.js so map can now init  
+  divRecipes.style.display = 'none';
   searchResults = [];
   initMap();
 });
