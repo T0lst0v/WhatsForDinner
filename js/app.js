@@ -92,12 +92,10 @@ async function displayFullRecipe(id) {
   fullRecipeContainer.style.display = "flex"; // modal code
   const accBtn = document.getElementById("accordion");
   accBtn.addEventListener("click", () => {
-    if (document.getElementById("panel").style.display === "none") {
-      console.log("if");
-      document.getElementById("panel").style.display = "block";
-    } else {
-      console.log("else");
+    if (document.getElementById("panel").style.display === "block") {
       document.getElementById("panel").style.display = "none";
+    } else {
+      document.getElementById("panel").style.display = "block";
     }
   });
 }
