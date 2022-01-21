@@ -76,10 +76,8 @@ async function displayFullRecipe(id) {
   let allIngredientsList = fullRecipeObj.extendedIngredients.map((e) => {
     return `<li class="recipeIngredientsList">${e.original}</li>`;
   });
-  console.log("allIngredientsList = " + allIngredientsList);
   let instructions = fullRecipeObj.instructions;
   if (instructions == null) instructions = " ";
-  console.log(instructions);
   modalContent.innerHTML = `
     <h2>${fullRecipeObj.title}</h2>
     <img id="imgModal" src="${fullRecipeObj.image}" style="float: right" alt="${fullRecipeObj}"/>
