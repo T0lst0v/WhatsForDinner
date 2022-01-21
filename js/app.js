@@ -67,7 +67,6 @@ async function getRecipeFromID(recipeID) {
   return await response.json();
 }
 
-// TODO add event listener for modal to prevent scrolling here
 // Displaying Full recipe in separate div (need to make it as a Modal)
 async function displayFullRecipe(id) {
   let fullRecipeObj = await getRecipeFromID(id);
@@ -76,17 +75,31 @@ async function displayFullRecipe(id) {
   });
   console.log("allIngredientsList = " + allIngredientsList);
   modalContent.innerHTML = `
-    <img src="${fullRecipeObj.image}" alt="${fullRecipeObj}"/>
     <h2>${fullRecipeObj.title}</h2>
-    <ul>${allIngredientsList.join("")}</ul>
+    <img id="imgModal" src="${
+      fullRecipeObj.image
+    }" style="float: right" alt="${fullRecipeObj}"/>
+    <ul style="display: inline-block;">${allIngredientsList.join("")}</ul>
     <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
     <p class='instructions'>${fullRecipeObj.instructions}</p>
-    <p class='summary'>${fullRecipeObj.summary}</p>
+    <button id="accordion">Chef's Summary</button>
+    <div id="panel">
+      <p class='summary'>${fullRecipeObj.summary}</p>
+    </div>
   `;
   console.log(fullRecipeObj);
   fullRecipeContainer.style.display = "flex"; // modal code
+  const accBtn = document.getElementById("accordion");
+  accBtn.addEventListener("click", () => {
+    if (document.getElementById("panel").style.display === "none") {
+      console.log("if");
+      document.getElementById("panel").style.display = "block";
+    } else {
+      console.log("else");
+      document.getElementById("panel").style.display = "none";
+    }
+  });
 }
-
 // Display Title and Picture of ID Recipe
 function displayRecipesFromSearch(recipes) {
   console.log("logging recipes search");
@@ -185,10 +198,13 @@ btnFindRecipe.addEventListener("click", async () => {
     displayRecipesFromSearch(recipes);
 
     // modal code
-    const btnDisplayRecipe = document.getElementsByClassName("btnDisplayRecipe");
+    const btnDisplayRecipe =
+      document.getElementsByClassName("btnDisplayRecipe");
     for (let element of btnDisplayRecipe) {
       console.log("THIS THING RIGHT HERE", element);
-      element.addEventListener("click", ({ target }) => displayFullRecipe(target.value));
+      element.addEventListener("click", ({ target }) =>
+        displayFullRecipe(target.value)
+      );
     }
   } else {
     console.log("empty arr");
@@ -210,7 +226,7 @@ btnDineOut.addEventListener("click", () => {
   divButton.style.display = "none";
   let divDineOut = document.getElementById("divDineOutMain");
   divDineOut.style.display = "block";
-  wait = false; // changing wait on dineOut.js so map can now init
+  waitToCreateMap = false; // changing wait on dineOut.js so map can now init
   searchResults = [];
   initMap();
 });
