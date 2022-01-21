@@ -35,7 +35,7 @@ html {
 body {
   display: table-cell;
   vertical-align: middle;
-  background-color: var(--background-color);
+  background: var(--background-color);
   width: 100%;
   /* overflow-y: scroll; */
 }

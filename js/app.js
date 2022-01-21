@@ -6,6 +6,8 @@ const txtIngredient = document.getElementById("txtAddIngredient");
 const maxUsed = document.getElementById("maxUsed");
 const minMissed = document.getElementById("minMissed");
 const divImg = document.getElementById("divImg");
+const gitHubLogo = document.getElementById("gitHubLogo");
+
 //buttons
 const btnAddIngredient = document.getElementById("btnAddIngredient");
 const btnFindRecipe = document.getElementById("btnFindRecipes");
@@ -228,6 +230,7 @@ btnDineOut.addEventListener("click", () => {
   waitToCreateMap = false; // changing wait on dineOut.js so map can now init
   divImg.style.display = "none";
   divRecipes.style.display = "none";
+  gitHubLogo.style.display = "none";
   searchResults = [];
   initMap();
 });
