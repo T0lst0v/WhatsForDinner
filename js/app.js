@@ -79,13 +79,14 @@ async function displayFullRecipe(id) {
   let allIngredientsList = fullRecipeObj.extendedIngredients.map((e) => {
     return `<li class="recipeIngredientsList">${e.original}</li>`;
   });
-  console.log("allIngredientsList = " + allIngredientsList);
+  let instructions = fullRecipeObj.instructions;
+  if (instructions == null) instructions = " ";
   modalContent.innerHTML = `
     <h2>${fullRecipeObj.title}</h2>
     <img id="imgModal" src="${fullRecipeObj.image}" style="float: right" alt="${fullRecipeObj}"/>
     <ul style="display: inline-block;">${allIngredientsList.join("")}</ul>
     <p class="readyInMinutes">Cook Time: ${fullRecipeObj.readyInMinutes} </p>
-    <p class='instructions'>${fullRecipeObj.instructions}</p>
+    <p class='instructions'>${instructions}</p>
     <button id="accordion">Chef's Summary</button>
     <div id="panel">
       <p class='summary'>${fullRecipeObj.summary}</p>
@@ -95,12 +96,10 @@ async function displayFullRecipe(id) {
   fullRecipeContainer.style.display = "flex"; // modal code
   const accBtn = document.getElementById("accordion");
   accBtn.addEventListener("click", () => {
-    if (document.getElementById("panel").style.display === "none") {
-      console.log("if");
-      document.getElementById("panel").style.display = "block";
-    } else {
-      console.log("else");
+    if (document.getElementById("panel").style.display === "block") {
       document.getElementById("panel").style.display = "none";
+    } else {
+      document.getElementById("panel").style.display = "block";
     }
   });
 }
