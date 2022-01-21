@@ -210,7 +210,7 @@ btnDineOut.addEventListener("click", () => {
   divButton.style.display = "none";
   let divDineOut = document.getElementById("divDineOutMain");
   divDineOut.style.display = "block";
-  wait = false; // changing wait on dineOut.js so map can now init
+  waitToCreateMap = false; // changing wait on dineOut.js so map can now init
   searchResults = [];
   initMap();
 });
