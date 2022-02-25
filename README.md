@@ -9,7 +9,7 @@
 
 ### Landing Page
 
-![landing page](/images/whatsForDinner.png)
+![landing page](/images/whatsForDinner.gif)
 
 ### Featured Programs
 
