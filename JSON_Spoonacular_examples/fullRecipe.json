@@ -1,0 +1,221 @@
+//https://www.foodista.com/recipe/BC6ZTT5G/donkatsu-korean-breaded-pork-cutlet
+// https://spoonacular.com/recipes/sausages-with-green-cabbage-mash-645422
+{
+  "vegetarian": false,
+  "vegan": false,
+  "glutenFree": true,
+  "dairyFree": true,
+  "veryHealthy": true,
+  "cheap": false,
+  "veryPopular": false,
+  "sustainable": false,
+  "weightWatcherSmartPoints": 20,
+  "gaps": "no",
+  "lowFodmap": false,
+  "aggregateLikes": 1,
+  "spoonacularScore": 88.0,
+  "healthScore": 70.0,
+  "creditsText": "Foodista.com – The Cooking Encyclopedia Everyone Can Edit",
+  "license": "CC BY 3.0",
+  "sourceName": "Foodista",
+  "pricePerServing": 238.78,
+  "extendedIngredients": [
+    {
+      "id": 10211821,
+      "aisle": "Produce",
+      "image": "yellow-bell-pepper.jpg",
+      "consistency": "solid",
+      "name": "bell pepper",
+      "nameClean": "bell pepper",
+      "original": "Black Pepper",
+      "originalString": "Black Pepper",
+      "originalName": "Black Pepper",
+      "amount": 2.0,
+      "unit": "servings",
+      "meta": ["black"],
+      "metaInformation": ["black"],
+      "measures": { "us": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" }, "metric": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" } }
+    },
+    {
+      "id": 1002025,
+      "aisle": "Spices and Seasonings",
+      "image": "ground-nutmeg.jpg",
+      "consistency": "solid",
+      "name": "fresh nutmeg",
+      "nameClean": "fresh nutmeg",
+      "original": "Fresh nutmeg",
+      "originalString": "Fresh nutmeg",
+      "originalName": "Fresh nutmeg",
+      "amount": 2.0,
+      "unit": "servings",
+      "meta": ["fresh"],
+      "metaInformation": ["fresh"],
+      "measures": { "us": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" }, "metric": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" } }
+    },
+    {
+      "id": 11109,
+      "aisle": "Produce",
+      "image": "cabbage.jpg",
+      "consistency": "solid",
+      "name": "green cabbage",
+      "nameClean": "cabbage",
+      "original": "500 gr. green cabbage",
+      "originalString": "500 gr. green cabbage",
+      "originalName": "green cabbage",
+      "amount": 500.0,
+      "unit": "gr",
+      "meta": ["green"],
+      "metaInformation": ["green"],
+      "measures": { "us": { "amount": 1.102, "unitShort": "lb", "unitLong": "pounds" }, "metric": { "amount": 500.0, "unitShort": "gr", "unitLong": "grs" } }
+    },
+    {
+      "id": 4053,
+      "aisle": "Oil, Vinegar, Salad Dressing",
+      "image": "olive-oil.jpg",
+      "consistency": "liquid",
+      "name": "olive oil",
+      "nameClean": "olive oil",
+      "original": "olive oil",
+      "originalString": "olive oil",
+      "originalName": "olive oil",
+      "amount": 2.0,
+      "unit": "servings",
+      "meta": [],
+      "metaInformation": [],
+      "measures": { "us": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" }, "metric": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" } }
+    },
+    {
+      "id": 11352,
+      "aisle": "Produce",
+      "image": "potatoes-yukon-gold.png",
+      "consistency": "solid",
+      "name": "potatoes",
+      "nameClean": "potato",
+      "original": "800 grams potatoes",
+      "originalString": "800 grams potatoes",
+      "originalName": "potatoes",
+      "amount": 800.0,
+      "unit": "grams",
+      "meta": [],
+      "metaInformation": [],
+      "measures": { "us": { "amount": 1.764, "unitShort": "lb", "unitLong": "pounds" }, "metric": { "amount": 800.0, "unitShort": "g", "unitLong": "grams" } }
+    },
+    {
+      "id": 1017063,
+      "aisle": "Meat",
+      "image": "raw-pork-sausage.png",
+      "consistency": "solid",
+      "name": "sausages",
+      "nameClean": "sausage",
+      "original": "2 sausages",
+      "originalString": "2 sausages",
+      "originalName": "sausages",
+      "amount": 2.0,
+      "unit": "",
+      "meta": [],
+      "metaInformation": [],
+      "measures": { "us": { "amount": 2.0, "unitShort": "", "unitLong": "" }, "metric": { "amount": 2.0, "unitShort": "", "unitLong": "" } }
+    },
+    {
+      "id": 1012047,
+      "aisle": "Spices and Seasonings",
+      "image": "salt.jpg",
+      "consistency": "solid",
+      "name": "sea salt",
+      "nameClean": "coarse sea salt",
+      "original": "Sea salt",
+      "originalString": "Sea salt",
+      "originalName": "Sea salt",
+      "amount": 2.0,
+      "unit": "servings",
+      "meta": [],
+      "metaInformation": [],
+      "measures": { "us": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" }, "metric": { "amount": 2.0, "unitShort": "servings", "unitLong": "servings" } }
+    },
+    {
+      "id": 10611282,
+      "aisle": "Produce",
+      "image": "white-onion.png",
+      "consistency": "solid",
+      "name": "white onion",
+      "nameClean": "white onion",
+      "original": "1 white onion, peeled & finely diced",
+      "originalString": "1 white onion, peeled & finely diced",
+      "originalName": "white onion, peeled & finely diced",
+      "amount": 1.0,
+      "unit": "",
+      "meta": ["diced", "white", "peeled", "finely"],
+      "metaInformation": ["diced", "white", "peeled", "finely"],
+      "measures": { "us": { "amount": 1.0, "unitShort": "", "unitLong": "" }, "metric": { "amount": 1.0, "unitShort": "", "unitLong": "" } }
+    }
+  ],
+  "id": 645422,
+  "title": "Sausages with Green Cabbage Mash",
+  "readyInMinutes": 45,
+  "servings": 2,
+  "sourceUrl": "http://www.foodista.com/recipe/RS6N3QPZ/green-cabbage-stoemp-with-sausages",
+  "image": "https://spoonacular.com/recipeImages/645422-556x370.jpg",
+  "imageType": "jpg",
+  "summary": "You can never have too many side dish recipes, so give Sausages with Green Cabbage Mash a try. One serving contains <b>454 calories</b>, <b>14g of protein</b>, and <b>16g of fat</b>. This gluten free, dairy free, and whole 30 recipe serves 2 and costs <b>$1.37 per serving</b>. From preparation to the plate, this recipe takes roughly <b>45 minutes</b>. Head to the store and pick up pepper, sausages, nutmeg, and a few other things to make it today. This recipe is liked by 1 foodies and cooks. All things considered, we decided this recipe <b>deserves a spoonacular score of 93%</b>. This score is super. Try <a href=\"https://spoonacular.com/recipes/sausages-with-apple-mash-221204\">Sausages with apple mash</a>, <a href=\"https://spoonacular.com/recipes/sausages-with-winter-veg-mash-212783\">Sausages with winter veg mash</a>, and <a href=\"https://spoonacular.com/recipes/peppery-sausages-with-sweet-potato-mash-219502\">Peppery sausages with sweet potato mash</a> for similar recipes.",
+  "cuisines": [],
+  "dishTypes": ["lunch", "main course", "main dish", "dinner"],
+  "diets": ["gluten free", "dairy free"],
+  "occasions": [],
+  "winePairing": {},
+  "instructions": "<ol><li>Take a large cooking pot &amp; fill with water. Turn the heat on high. When the water is boiling, put the potatoes in. Boil until tender. This is about 12 minutes.</li><li>Take a non stick pan &amp; heat up on high. When hot, pour a swirl of olive oil in the pan. Put in your sausages and cook on both sides until ready. When it has cooked for 5 minutes on both sides, turn the heat to medium.</li><li>When the sausages are frying, take another large cooking pot &amp; fill it with boiling water from the kettle. When boiling, add the cut up green cabbage &amp; cook until ready. This will take about 5 to 8 minutes. Drain &amp; keep warm.</li><li>On the same heat, where the cabbage has cooked, take a little pan &amp; heat up on high. Put a bit of olive oil in it. When hot, add the chopped up onion. Saute until golden.Turn the heat off. Add the onion to the cabbage. I add black pepper and sea salt here to taste.</li><li>When the potatoes are ready, drain, &amp; add them to the cabbage - onion mixture. Mash everything together with a masher. Season with some freshly grated nutmeg according to taste. I taste &amp; add some extra black Pepper &amp; some sea salt. Put the lid back on.</li><li>When the sausages are ready, turn the heat off.</li><li>Take your 2 serving plates &amp; put it on the plates.</li></ol>",
+  "analyzedInstructions": [
+    {
+      "name": "",
+      "steps": [
+        {
+          "number": 1,
+          "step": "Take a large cooking pot &amp; fill with water. Turn the heat on high. When the water is boiling, put the potatoes in. Boil until tender. This is about 12 minutes.Take a non stick pan &amp; heat up on high. When hot, pour a swirl of olive oil in the pan. Put in your sausages and cook on both sides until ready. When it has cooked for 5 minutes on both sides, turn the heat to medium.When the sausages are frying, take another large cooking pot &amp; fill it with boiling water from the kettle. When boiling, add the cut up green cabbage &amp; cook until ready. This will take about 5 to 8 minutes.",
+          "ingredients": [
+            { "id": 11109, "name": "green cabbage", "localizedName": "green cabbage", "image": "cabbage.jpg" },
+            { "id": 4053, "name": "olive oil", "localizedName": "olive oil", "image": "olive-oil.jpg" },
+            { "id": 11352, "name": "potato", "localizedName": "potato", "image": "potatoes-yukon-gold.png" },
+            { "id": 1017063, "name": "sausage", "localizedName": "sausage", "image": "raw-pork-sausage.png" },
+            { "id": 14412, "name": "water", "localizedName": "water", "image": "water.png" }
+          ],
+          "equipment": [
+            { "id": 404645, "name": "frying pan", "localizedName": "frying pan", "image": "pan.png" },
+            { "id": 404752, "name": "pot", "localizedName": "pot", "image": "stock-pot.jpg" }
+          ],
+          "length": { "number": 22, "unit": "minutes" }
+        },
+        {
+          "number": 2,
+          "step": "Drain &amp; keep warm.On the same heat, where the cabbage has cooked, take a little pan &amp; heat up on high. Put a bit of olive oil in it. When hot, add the chopped up onion.",
+          "ingredients": [
+            { "id": 4053, "name": "olive oil", "localizedName": "olive oil", "image": "olive-oil.jpg" },
+            { "id": 11109, "name": "cabbage", "localizedName": "cabbage", "image": "cabbage.jpg" },
+            { "id": 11282, "name": "onion", "localizedName": "onion", "image": "brown-onion.png" }
+          ],
+          "equipment": [{ "id": 404645, "name": "frying pan", "localizedName": "frying pan", "image": "pan.png" }]
+        },
+        { "number": 3, "step": "Saute until golden.Turn the heat off.", "ingredients": [], "equipment": [] },
+        {
+          "number": 4,
+          "step": "Add the onion to the cabbage. I add black pepper and sea salt here to taste.When the potatoes are ready, drain, &amp; add them to the cabbage - onion mixture. Mash everything together with a masher. Season with some freshly grated nutmeg according to taste. I taste &amp; add some extra black Pepper &amp; some sea salt.",
+          "ingredients": [
+            { "id": 1002030, "name": "black pepper", "localizedName": "black pepper", "image": "pepper.jpg" },
+            { "id": 11352, "name": "potato", "localizedName": "potato", "image": "potatoes-yukon-gold.png" },
+            { "id": 1012047, "name": "sea salt", "localizedName": "sea salt", "image": "salt.jpg" },
+            { "id": 11109, "name": "cabbage", "localizedName": "cabbage", "image": "cabbage.jpg" },
+            { "id": 2025, "name": "nutmeg", "localizedName": "nutmeg", "image": "ground-nutmeg.jpg" },
+            { "id": 11282, "name": "onion", "localizedName": "onion", "image": "brown-onion.png" }
+          ],
+          "equipment": []
+        },
+        {
+          "number": 5,
+          "step": "Put the lid back on.When the sausages are ready, turn the heat off.Take your 2 serving plates &amp; put it on the plates.",
+          "ingredients": [{ "id": 1017063, "name": "sausage", "localizedName": "sausage", "image": "raw-pork-sausage.png" }],
+          "equipment": []
+        }
+      ]
+    }
+  ],
+  "originalId": null,
+  "spoonacularSourceUrl": "https://spoonacular.com/sausages-with-green-cabbage-mash-645422"
+}
