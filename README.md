@@ -17,13 +17,13 @@ Html, CSS, JavaScript
 
 ### Developed By
 
-#### Jason Paff
-
-<https://github.com/SleepyBookworm>
-
 #### Serge Tolstov
 
 <https://github.com/T0lst0v>
+
+#### Jason Paff
+
+<https://github.com/JasonPaff>
 
 #### Shawn Miramon
 
