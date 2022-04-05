@@ -212,6 +212,8 @@ btnFindRecipe.addEventListener("click", async () => {
   }
 });
 
+// TODO: FIXME:
+
 // Cook at home shows ingredient div ( hides main button div )
 btnCookAtHome.addEventListener("click", () => {
   //   let divButton = document.getElementById("divButtons");

@@ -10,7 +10,7 @@ const autoIngredient = async (searchIngredient, inp) => {
   });
 
   //  select from drop down on click
-  //TODO hide if Input or drop is not in focus
+  //TODO: hide if Input or drop is not in focus
   autoCompleteBox.innerHTML = listItems.join("");
   autoCompleteBox.addEventListener("click", (e) => {
     txtIngredient.value = e.target.innerHTML;
